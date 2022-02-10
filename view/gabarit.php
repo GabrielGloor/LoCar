@@ -25,14 +25,14 @@
     <title><?=$title?></title>
 
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="contents/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="view/contents/css/bootstrap.css" />
 
     <!-- fonts style -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="contents/css/style.css" rel="stylesheet" />
+    <link href="view/contents/css/style.css" rel="stylesheet" />
     <!-- responsive style -->
-    <link href="contents/css/responsive.css" rel="stylesheet" />
+    <link href="view/contents/css/responsive.css" rel="stylesheet" />
 
     <script src="https://kit.fontawesome.com/d8302aa554.js" crossorigin="anonymous"></script>
 </head>
@@ -47,7 +47,7 @@
 
             <div class="number-box">
                 <a href="">
-                    <img src="contents/img/phone.png" alt="">
+                    <img src="view/contents/img/phone.png" alt="">
                     <h6>
                         +01 123567894
                     </h6>
@@ -55,7 +55,7 @@
             </div>
             <div class="mail-box">
                 <a href="">
-                    <img src="contents/img/mail.png" alt="">
+                    <img src="view/contents/img/mail.png" alt="">
                     <h6>
                         demo@gmail
                     </h6>
@@ -64,22 +64,22 @@
             <div class="social-box">
                 <div class="box">
                     <a href="">
-                        <img src="contents/img/facebook-logo.png" alt="">
+                        <img src="view/contents/img/facebook-logo.png" alt="">
                     </a>
                 </div>
                 <div class="box">
                     <a href="">
-                        <img src="contents/img/twitter.png" alt="">
+                        <img src="view/contents/img/twitter.png" alt="">
                     </a>
                 </div>
                 <div class="box">
                     <a href="">
-                        <img src="contents/img/linkedin.png" alt="">
+                        <img src="view/contents/img/linkedin.png" alt="">
                     </a>
                 </div>
                 <div class="box">
                     <a href="">
-                        <img src="contents/img/instagram-logo.png" alt="">
+                        <img src="view/contents/img/instagram-logo.png" alt="">
                     </a>
                 </div>
             </div>
@@ -157,9 +157,9 @@
 <!-- footer section -->
 
 
-<script type="text/javascript" src="contents/js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="contents/js/bootstrap.js"></script>
-<script type="text/javascript" src="contents/js/custom.js"></script>
+<script type="text/javascript" src="view/contents/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="view/contents/js/bootstrap.js"></script>
+<script type="text/javascript" src="view/contents/js/custom.js"></script>
 
 </body>
 

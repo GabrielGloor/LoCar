@@ -86,7 +86,7 @@ $title = 'LoCar - Accueil';
             <div class="row">
                 <div class="col-md-6 c-1">
                     <div class="img-box">
-                        <img src="contents/img/car-1.png" alt="">
+                        <img src="view/contents/img/car-1.png" alt="">
                     </div>
                     <div class="detail-box">
                         <div class="btn-box">
@@ -113,7 +113,7 @@ $title = 'LoCar - Accueil';
                 </div>
                 <div class="col-md-6 c-2">
                     <div class="img-box">
-                        <img src="contents/img/car-2.png" alt="">
+                        <img src="view/contents/img/car-2.png" alt="">
                     </div>
                     <div class="detail-box">
                         <div class="btn-box">
@@ -140,7 +140,7 @@ $title = 'LoCar - Accueil';
                 </div>
                 <div class="col-md-6 c-3">
                     <div class="img-box">
-                        <img src="contents/img/car-3.png" alt="">
+                        <img src="view/contents/img/car-3.png" alt="">
                     </div>
                     <div class="detail-box">
                         <div class="btn-box">
@@ -167,7 +167,7 @@ $title = 'LoCar - Accueil';
                 </div>
                 <div class="col-md-6 c-4">
                     <div class="img-box">
-                        <img src="contents/img/car-4.png" alt="">
+                        <img src="view/contents/img/car-4.png" alt="">
                     </div>
                     <div class="detail-box">
                         <div class="btn-box">
@@ -266,7 +266,7 @@ $title = 'LoCar - Accueil';
                 </div>
                 <div class="col-md-6">
                     <div class="contact_img-box">
-                        <img src="contents/img/car-service.jpg" alt="">
+                        <img src="view/contents/img/car-service.jpg" alt="">
                     </div>
                 </div>
             </div>

@@ -20,12 +20,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="contents/img/icon.ico"/>
+	<link rel="icon" type="image/png" href="view/contents/img/icon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="contents/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="view/contents/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="contents/css/login-util.css">
-	<link rel="stylesheet" type="text/css" href="contents/css/login.css">
+	<link rel="stylesheet" type="text/css" href="view/contents/css/login-util.css">
+	<link rel="stylesheet" type="text/css" href="view/contents/css/login.css">
 <!--===============================================================================================-->
 </head>
 <body style="background-color: #666666;">
@@ -82,17 +82,17 @@
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('contents/img/hero-bg.png');">
-					<a href="index.php"><i class="fas fa-chevron-left"></i></a>
+				<div class="login100-more" style="background-image: url('view/contents/img/hero-bg.png');">
+					<a href="?action=home"><i class="fas fa-chevron-left"></i></a>
 				</div>
 			</div>
 		</div>
 	</div>
 	
 <!--===============================================================================================-->
-	<script src="contents/jquery/jquery-3.2.1.min.js"></script>
+	<script src="view/contents/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="contents/js/login.js"></script>
+	<script src="view/contents/js/login.js"></script>
 <!--===============================================================================================-->
 	<script src="https://kit.fontawesome.com/d8302aa554.js" crossorigin="anonymous"></script>
 
