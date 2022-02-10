@@ -1,3 +1,13 @@
+<?php
+/**
+ * @file         login.php
+ * @author       diogo.da-silva-fernandes@cpnv.ch
+ * @date         10.02.2022
+ * @project      LoCar WEBSITE
+ * @description  Login page
+ * @last_update  diogo.da-silva-fernandes@cpnv.ch - 10.02.2022
+ */
+?>
 <!--
 	Downloaded from https://colorlib.com/wp/template/login-form-v18/
 	Updated by: diogo.da-silva-fernandes@cpnv.ch
@@ -29,13 +39,13 @@
 					</span>
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email">
+						<input class="input100" type="text" name="inputEmail">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Email</span>
 					</div>
 					
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass" id="psswd">
+						<input class="input100" type="password" name="inputPswd" id="psswd">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Mot de passe</span>
 					</div>
