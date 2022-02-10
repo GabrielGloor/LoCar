@@ -6,7 +6,7 @@
  * @Description : This file is designed for redirecting to the adaptate fonction
  */
 
-require "controller/controller.php";
+require "controller/users.php";
 require "controller/nav.php";
 
 
