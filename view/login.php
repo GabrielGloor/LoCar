@@ -82,7 +82,7 @@
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('contents/img/hero-bg.png');">
+				<div class="login100-more" style="background-image: url('view/contents/img/hero-bg.png');">
 					<a href="?action=home"><i class="fas fa-chevron-left"></i></a>
 				</div>
 			</div>
