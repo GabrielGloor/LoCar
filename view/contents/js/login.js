@@ -3,8 +3,15 @@
   */
 
 function fn_changePsswdView(itemId){
-    var psswdBox = document.getElementById('psswd');
-    if(document.getElementById(itemId).checked) psswdBox.type = "text"; else psswdBox.type = "password";
+    var psswdBox1 = document.getElementById('psswd');
+    var psswdBox2 = document.getElementById('psswd2');
+    if(document.getElementById(itemId).checked){
+        psswdBox1.type = "text";
+        psswdBox2.type = "text";
+    }else{
+        psswdBox1.type = "password";
+        psswdBox2.type = "password";
+    }
 }
 
 
