@@ -22,3 +22,15 @@ function login($inputs)
         require "view/login.php";
     }
 }
+
+/**
+ * @brief This function is designed to end the user session
+ */
+function logout()
+{
+    unset($_SESSION['username']);
+    session_destroy();
+
+    header("Location: ?action=home");
+
+}
