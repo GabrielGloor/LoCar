@@ -41,6 +41,13 @@
                         <?php if(isset($_SESSION['username'])) echo '<i class="fa-solid fa-user" style="padding-right: 15px"></i>'.$_SESSION['username']; else echo 'Se connecter';?>
                     </a>
                 </div>
+                <?php if(!isset($_SESSION['username'])){?>
+                    <div class="login_btn-container ml-0 ml-lg-4 d-flex justify-content-center">
+                        <a href="?action=register">
+                            S'enregistrer
+                        </a>
+                    </div>
+                <?php }?>
                 <?php if(isset($_SESSION['username'])){?>
                 <div class="login_btn-container ml-0 ml-lg-4 d-flex justify-content-center">
                     <a href="?action=logout" style="color: red">
