@@ -66,7 +66,13 @@
 									  	<p style='color: red; margin-top: -15px; margin-bottom: 15px;'>Email et/ou mot de passe incorrect !</p>
 									  </div>";
 							}
-						}
+						}elseif (isset($_GET['userCreated'])){
+                            if($_GET['userCreated'] == 'true'){
+                                echo "<div class='registerOk'>
+									  	<p style='color: limegreen; margin-top: -15px; margin-bottom: 15px;'>Votre utilisateur a bien été créé ! Vous pouvez vous connecter.</p>
+									  </div>";
+                            }
+                        }
 					?>
 
 					<div class="container-login100-form-btn">
