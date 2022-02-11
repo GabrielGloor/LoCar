@@ -24,7 +24,7 @@ $title = 'LoCar - Accueil';
                 et rapide
             </h1>
             <div class="btn-box">
-                <a href="" class="btn-1">
+                <a href="#offres" class="btn-1">
                     Offres
                 </a>
             </div>
@@ -34,9 +34,9 @@ $title = 'LoCar - Accueil';
 <!-- end slider section -->
 
 <!-- find section -->
-<section class="find_section layout_padding2">
+<section class="find_section layout_padding2" id="offres">
     <div class="container">
-        <form action="">
+        <form action="#" method="post">
             <div>
                 <h5>
                     Rechercher une offre
@@ -74,7 +74,7 @@ $title = 'LoCar - Accueil';
 <!-- end find section -->
 
 <!-- car section -->
-<section class="car_section layout_padding" id="offres">
+<section class="car_section layout_padding">
     <div class="container">
         <div class="heading_container">
             <h2>
@@ -238,7 +238,7 @@ $title = 'LoCar - Accueil';
         <div class="layout_padding">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="">
+                    <form action="#" method="post">
                         <div class="contact_form-container">
                             <div>
                                 <div>
