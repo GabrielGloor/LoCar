@@ -24,6 +24,14 @@ function login($inputs)
 }
 
 /**
+ * @brief This function is designed to verify if the inputs are filled. If not it will show the register page, else it will register the user. (WIP)
+ */
+function register()
+{
+    require "view/register.php";
+}
+
+/**
  * @brief This function is designed to end the user session
  */
 function logout()
