@@ -38,7 +38,7 @@
                 </div>
                 <div class="login_btn-container ml-0 ml-lg-4 d-flex justify-content-center">
                     <a <?php if(isset($_SESSION['username'])) echo 'href="?action=logout"'; else echo 'href="?action=login"';?>>
-                        <?php if(isset($_SESSION['username'])) echo '<i class="fa-solid fa-user">'.$_SESSION['username'].'</i>'; else echo 'Se connecter';?>
+                        <?php if(isset($_SESSION['username'])) echo '<i class="fa-solid fa-user" style="padding-right: 15px">'.$_SESSION['username'].'</i>'; else echo 'Se connecter';?>
                     </a>
                 </div>
             </div>
