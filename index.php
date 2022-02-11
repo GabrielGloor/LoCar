@@ -22,7 +22,7 @@ if (isset($_GET['action'])) {
             login($_POST);
             break;
         default :
-            home();
+            lost();
     }
 } else {
     home();
