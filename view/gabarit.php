@@ -133,7 +133,7 @@
                     </h5>
                     <div class="form_container">
                         <form action="#" method="post">
-                            <input type="email" placeholder="Enter your email">
+                            <input type="email" placeholder="Votre email">
                             <button type="submit">
                                 Subscribe
                             </button>
