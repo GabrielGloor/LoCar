@@ -103,7 +103,7 @@ $title = 'LoCar - Accueil';
                             <div class="price">
                                 <h4>
                 <span>
-                  $
+                  CHF
                 </span>
                                     30000.00
                                 </h4>
@@ -130,7 +130,7 @@ $title = 'LoCar - Accueil';
                             <div class="price">
                                 <h4>
                 <span>
-                  $
+                  CHF
                 </span>
                                     40000.00
                                 </h4>
@@ -157,7 +157,7 @@ $title = 'LoCar - Accueil';
                             <div class="price">
                                 <h4>
                 <span>
-                  $
+                  CHF
                 </span>
                                     60000.00
                                 </h4>
@@ -184,7 +184,7 @@ $title = 'LoCar - Accueil';
                             <div class="price">
                                 <h4>
                 <span>
-                  $
+                  CHF
                 </span>
                                     50000.00
                                 </h4>
