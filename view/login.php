@@ -77,7 +77,7 @@
 					
 					<div class="text-center p-t-46 p-b-20">
 						<span class="txt2">
-							ou <a href="#">s'inscrire</a>
+							ou <a href="?action=register">s'inscrire</a>
 						</span>
 					</div>
 				</form>
