@@ -132,7 +132,7 @@
                         Newsletter
                     </h5>
                     <div class="form_container">
-                        <form action="">
+                        <form action="#" method="post">
                             <input type="email" placeholder="Enter your email">
                             <button type="submit">
                                 Subscribe
