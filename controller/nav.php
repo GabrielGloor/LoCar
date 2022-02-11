@@ -13,4 +13,11 @@ function home()
 {
     require "view/home.php";
 }
-?>
+
+/**
+ * @brief This function is designed to show the lost page
+ */
+function lost()
+{
+    require "view/lost.php";
+}
