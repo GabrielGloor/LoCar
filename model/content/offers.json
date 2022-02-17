@@ -1,9 +1,12 @@
 [
     {
+        "id" : 192168,
         "name" : "",
         "price" : 22,
         "description" : "",
         "town" : "",
-        "image" : ""
+        "image" : "",
+        "brand" : "",
+        "year" : 2021
     }
 ]
