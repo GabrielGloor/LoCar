@@ -28,13 +28,8 @@ require "view/contents/offers_findSection.php";
         <div class="layout_padding">
             <div class="row">
                 <?php
-                    for ($i = 1; $i <= 80; $i++){
-                        $class = $i;
-                        $link = "view/contents/img/car-1.png";
-                        $name = "Camry";
-                        $price = 20000.00;
-                        require "view/contents/offer_template.php";
-                    }
+                    require "model/offersManagement.php";
+                    showOffers();
                 ?>
             </div>
         </div>
