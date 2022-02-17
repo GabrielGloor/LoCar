@@ -278,15 +278,12 @@ a:focus {
 .car_section .col-md-6 .img-box img {
   width: 100%;
 }
-.car_section .col-md-6.c-1 {
+.car_section .col-md-6.impair {
   border-right: 1px dashed #050505;
   border-bottom: 1px dashed #050505;
 }
-.car_section .col-md-6.c-2 {
+.car_section .col-md-6.pair {
   border-bottom: 1px dashed #050505;
-}
-.car_section .col-md-6.c-3 {
-  border-right: 1px dashed #050505;
 }
 .car_section .see_more-btn {
   display: inline-block;

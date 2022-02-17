@@ -351,20 +351,14 @@ a:focus {
       }
     }
 
-    &.c-1 {
+    &.impair {
       border-right: 1px dashed $black;
       border-bottom: 1px dashed $black;
     }
 
-    &.c-2 {
+    &.pair {
       border-bottom: 1px dashed $black;
     }
-
-    &.c-3 {
-      border-right: 1px dashed $black;
-    }
-
-    &.c-1 {}
   }
 
   .see_more-btn {
