@@ -33,45 +33,7 @@ $title = 'LoCar - Accueil';
 </div>
 <!-- end slider section -->
 
-<!-- find section -->
-<section class="find_section layout_padding2" id="offres">
-    <div class="container">
-        <form action="#" method="post">
-            <div>
-                <h5>
-                    Rechercher une offre
-                </h5>
-            </div>
-            <div class=" form-row">
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="Recherche ">
-                </div>
-                <div class="col-sm-4">
-                    <select name="" id="" class="form-control">
-                        <option value="">Marques</option>
-                        <option value="">Option 1</option>
-                        <option value="">Option 2</option>
-                        <option value="">Option 3</option>
-                    </select>
-                </div>
-                <div class="col-sm-4">
-                    <select name="" id="" class="form-control">
-                        <option value="">Années</option>
-                        <option value="">Option 1</option>
-                        <option value="">Option 2</option>
-                        <option value="">Option 3</option>
-                    </select>
-                </div>
-            </div>
-            <div class="d-flex justify-content-center justify-content-sm-end">
-                <button type="submit" class="">
-                    Rechercher
-                </button>
-            </div>
-        </form>
-    </div>
-</section>
-<!-- end find section -->
+<?php require "view/contents/offers_findSection.php" ?>
 
 <!-- car section -->
 <section class="car_section layout_padding">
@@ -195,7 +157,7 @@ $title = 'LoCar - Accueil';
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <a href="" class="see_more-btn">
+            <a href="?action=offers" class="see_more-btn">
                 Voir plus
             </a>
         </div>
