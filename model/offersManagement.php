@@ -6,7 +6,7 @@
  * @Description : This file is designed for manage the offers
  */
 
-require "model/json.php";
+require_once "model/json.php";
 
 function showOffers(){
 
@@ -15,8 +15,9 @@ function showOffers(){
     $nbOffers = count($offersData);
     if ($nbOffers == 0){
         $err = "Il n'y a aucune offre actuellement";
+        require "view/contents/offer_template.php";
     }else{
-        for ($showCurrentOffers = 1; $showCurrentOffers <= $nbOffers; $showCurrentOffers++) {
+        for ($showCurrentOffers = 0; $showCurrentOffers < $nbOffers; $showCurrentOffers++) {
             $class = $showCurrentOffers%2 ? $showCurrentOffers." pair" : $showCurrentOffers." impair";
             $name = $offersData[$showCurrentOffers]['name'];
             $linkImg = $offersData[$showCurrentOffers]['image'];
