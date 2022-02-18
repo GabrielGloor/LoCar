@@ -8,6 +8,9 @@
 
 require_once "model/json.php";
 
+/**
+ * @brief This function is designed to show all offers
+ */
 function showOffers(){
 
     $offersData = decodeJson("model/content/offers.json");
@@ -29,6 +32,11 @@ function showOffers(){
     }
 }
 
+
+/**
+ * @brief This function is designed to show the details of one offer
+ * @param $offerId : This param is for designate only one offer
+ */
 function showOffersDetails($offerId){
     $offersData = decodeJson("model/content/offers.json");
 
@@ -51,4 +59,25 @@ function showOffersDetails($offerId){
             $town = $offersData['town'];
         }
     }
+}
+
+/**
+ * @brief This function is designed to create an offer on insert it in json file
+ * @param $data : This param contain all the offer's datas
+ */
+function createOffer($data){
+    $jsonFile = "model/content/offers.json";
+    $allOffersDatas = decodeJson($jsonFile);
+
+    foreach ($allOffersDatas as $offerDatas){
+        if ($offerDatas['name'] == $data['name']){
+            header('Location: ?action=offerCreate&exists=true');
+        }
+    }
+
+    $allOffersDatas .= $data;
+    encodeJson($allOffersDatas, $jsonFile);
+
+    header('Location: ?action=home');
+
 }
