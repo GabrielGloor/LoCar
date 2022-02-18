@@ -30,6 +30,9 @@ if (isset($_GET['action'])) {
         case 'offers':
             offers();
             break;
+        case 'offerDetails':
+            offerDetails();
+            break;
         default :
             lost();
     }
