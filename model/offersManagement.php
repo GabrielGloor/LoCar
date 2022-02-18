@@ -21,7 +21,7 @@ function showOffers(){
             $class = $showCurrentOffers%2 ? $showCurrentOffers." pair" : $showCurrentOffers." impair";
             $name = $offersData[$showCurrentOffers]['name'];
             $linkImg = $offersData[$showCurrentOffers]['image'];
-            $linkToDetails = "?action=offer&offerId=".$offersData[$showCurrentOffers]['id'];
+            $linkToDetails = "?action=offerDetails&offerId=".$offersData[$showCurrentOffers]['id'];
             $price = $offersData[$showCurrentOffers]['price'];
 
             require "view/contents/offer_template.php";
