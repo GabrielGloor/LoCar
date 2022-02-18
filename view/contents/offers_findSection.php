@@ -19,23 +19,14 @@
                 </h5>
             </div>
             <div class=" form-row">
-                <div class="col-sm-4">
-                    <input type="text" name="search" class="form-control" placeholder="Recherche ">
+                <div class="col-sm-6">
+                    <input type="text" name="search" class="form-control" placeholder="Lieu">
                 </div>
-                <div class="col-sm-4">
-                    <select name="brand" id="" class="form-control">
-                        <option value="">Marques</option>
-                        <option value="">Option 1</option>
-                        <option value="">Option 2</option>
-                        <option value="">Option 3</option>
-                    </select>
-                </div>
-                <div class="col-sm-4">
-                    <select name="year" id="" class="form-control">
-                        <option value="">Années</option>
-                        <option value="">Option 1</option>
-                        <option value="">Option 2</option>
-                        <option value="">Option 3</option>
+                <div class="col-sm-6">
+                    <select name="prices" id="" class="form-control">
+                        <option value="">Tri</option>
+                        <option value="">Prix croissant</option>
+                        <option value="">Prix décroissant</option>
                     </select>
                 </div>
             </div>
