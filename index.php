@@ -8,6 +8,7 @@
 
 require "controller/users.php";
 require "controller/nav.php";
+require "controller/offersController.php";
 
 
 session_start();
