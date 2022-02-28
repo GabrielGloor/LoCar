@@ -5,7 +5,7 @@
         "price" : 22,
         "description" : "- Audi grise claire\n- 5 places\n- coffre à l'arrière\n- ",
         "town" : "1462 Yvonnand (VD)",
-        "image" : "images-voitures/audi.jpg",
+        "image" : "model/content/offers_img/audi.jpg",
         "brand" : "Audi",
         "ownerEmail": "Romainhd.19@gmail.com",
         "year" : 2021
