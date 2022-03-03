@@ -14,27 +14,27 @@ require 'view/contents/top_bar.php';
 ?>
 <div class="boxOffer">
     <div class="imgBox">
-        <img class="img-fluid" src="view/contents/img/car.png">
+        <img class="img-fluid" src="<?=$linkToImg?>">
     </div>
 
     <div class="titlePriceTown">
-        <h3>Annonce</h3>
-        <p><span style="color: limegreen">CHF</span> 55/Jour</p>
-        <p>Yverdon-Les-Bains</p>
+        <h3><?=$name?></h3>
+        <p><span style="color: limegreen">CHF</span> <?=$price?>/Jour</p>
+        <p><?=$town?></p>
     </div>
 
     <hr>
 
     <div class="infos">
         <div class="brand">
-            <p><span style="font-weight: bold">Marque :</span> Audi</p>
+            <p><span style="font-weight: bold">Marque :</span> <?=$brand?></p>
         </div>
         <div class="year">
-            <p><span style="font-weight: bold">Année :</span> 2022</p>
+            <p><span style="font-weight: bold">Année :</span> <?=$year?></p>
         </div>
         <div class="desc">
             <p><span style="font-weight: bold">Description :</span></p>
-            <textarea readonly rows="10">asddddddddddddddddddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea>
+            <textarea readonly rows="10"><?=$description?></textarea>
         </div>
     </div>
 
