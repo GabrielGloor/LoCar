@@ -21,10 +21,3 @@ function lost()
 {
     require "view/lost.php";
 }
-
-/**
- * @brief This function is designed to show the offer details page
- */
-function offerDetails(){
-    require "view/offerDetails.php";
-}
