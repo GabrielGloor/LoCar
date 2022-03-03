@@ -32,7 +32,7 @@ if (isset($_GET['action'])) {
             offers();
             break;
         case 'offerDetails':
-            offerDetails();
+            offerDetails($_GET['offerId']);
             break;
         default :
             lost();
