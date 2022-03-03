@@ -6,33 +6,26 @@
  * @Description : This file is designed to manage the offers
  */
 
-require "model/offersManagement.php";
+require_once "model/offersManagement.php";
 
 function offers(){
-    require "view/offers.php";
-}
+    $offers = getOffersInfos();
+    $classNb = 0;
 
-/**
- * @brief This function is designed to show all offers
- */
-function showOffers(){
-    $offersData = getOffersInfos();
+    ob_start();
+    foreach ($offers as $offer){
+        $class = $classNb%2 ? ($classNb+1)." pair" : ($classNb+1)." impair";
+        $name = $offer['name'];
+        $linkToImg = $offer['image'];
+        $price = $offer['price'];
+        $id = $offer['id'];
+        $linkToDetails = "?action=offerDetails&offerId=".$id;
 
-    $nbOffers = count($offersData);
-    if ($nbOffers == 0){
-        $err = "Il n'y a aucune offre actuellement";
         require "view/contents/offer_template.php";
-    }else{
-        for ($showCurrentOffers = 0; $showCurrentOffers < $nbOffers; $showCurrentOffers++) {
-            $class = $showCurrentOffers%2 ? $showCurrentOffers." pair" : $showCurrentOffers." impair";
-            $name = $offersData[$showCurrentOffers]['name'];
-            $linkImg = $offersData[$showCurrentOffers]['image'];
-            $linkToDetails = "?action=offerDetails&offerId=".$offersData[$showCurrentOffers]['id'];
-            $price = $offersData[$showCurrentOffers]['price'];
-
-            require "view/contents/offer_template.php";
-        }
+        $classNb++;
     }
+    $products = ob_get_clean();
+    require "view/offers.php";
 }
 
 /**
@@ -56,4 +49,25 @@ function showOffersInHomePage(){
             require "view/contents/offer_template.php";
         }
     }
+}
+
+function offerDetails($id){
+    $offersDatas = getOffersInfos();
+
+    foreach ($offersDatas as $offerData){
+        if ($offerData['id'] == $id) {
+            $linkToImg = $offerData['image'];
+            $name = $offerData['name'];
+            $price = $offerData['price'];
+            $town = $offerData['town'];
+            $brand = $offerData['brand'];
+            $year = $offerData['year'];
+            $description = $offerData['description'];
+            $title = $name;
+
+            require "view/offerDetails.php";
+        }
+    }
+
+
 }
