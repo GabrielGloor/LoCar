@@ -16,7 +16,7 @@ if (isset($err)){
 ?>
 <div class="col-md-6 c-<?=$class?>">
     <div class="img-box">
-        <img src="<?=$linkImg?>" alt="">
+        <img src="<?=$linkToImg?>" alt="">
     </div>
     <div class="detail-box">
         <div class="btn-box">
