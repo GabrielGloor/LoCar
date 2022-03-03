@@ -28,7 +28,7 @@ require "view/contents/offers_findSection.php";
         <div class="layout_padding">
             <div class="row">
                 <?php
-                    require "model/offersManagement.php";
+                    require_once "controller/offersController.php";
                     showOffers();
                 ?>
             </div>
