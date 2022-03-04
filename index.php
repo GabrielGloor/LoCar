@@ -34,6 +34,9 @@ if (isset($_GET['action'])) {
         case 'offerDetails':
             offerDetails($_GET['offerId']);
             break;
+        case 'createOffer':
+            createOffer($_POST);
+            break;
         default :
             lost();
     }
