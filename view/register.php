@@ -7,6 +7,8 @@
  * @description  DESCRIPTION
  * @last_update  Diogo.DA-SILVA-FERNA - DATE
  */
+
+if (isset($_SESSION['username'])) header('Location: ?action=home');
 ?>
 <!--
 	Downloaded from https://colorlib.com/wp/template/login-form-v18/
