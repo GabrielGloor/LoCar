@@ -13,7 +13,7 @@ $title = 'Créer une offre';
 ?>
 <?php include 'contents/top_bar.php'; ?>
 
-<form action="?action=createOffer" method="post" class="createOffer">
+<form action="?action=createOffer" method="post" enctype="multipart/form-data" class="createOffer">
     <div class="form-group">
         <label for="title">Titre de l'annonce *</label>
         <input class="form-control" id="title" name="title" placeholder="Ex: Honda Civic 3 portes" required>
@@ -40,7 +40,7 @@ $title = 'Créer une offre';
     </div>
     <div class="form-group">
         <label for="img">Image *</label>
-        <input class="form-control-file" type="file" name="img" id="img" required>
+        <input class="form-control-file" type="file" name="img"  accept="image/jpeg, image/png, image/jpg" id="img" required>
     </div>
     <button class="btn btn-primary" type="submit">Créer</button>
 </form>
