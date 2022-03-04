@@ -67,7 +67,7 @@ require 'view/contents/top_bar.php';
                                             <textarea name="msg" cols="30" rows="10" placeholder="Message"></textarea>
                                         </div>
                                         <div class="mt-5 d-flex justify-content-center justify-content-sm-start">
-                                            <button type="submit">
+                                            <button type="submit" style="width: 90%">
                                                 Envoyer
                                             </button>
                                         </div>
