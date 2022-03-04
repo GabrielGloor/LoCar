@@ -8,6 +8,8 @@
  * @last_update  Diogo.DA-SILVA-FERNA - DATE
  */
 
+if (!isset($_SESSION['username'])) header('Location: ?action=home');
+
 ob_start();
 $title = 'Créer une offre';
 ?>

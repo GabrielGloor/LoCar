@@ -7,6 +7,8 @@
  * @description  Login page
  * @last_update  diogo.da-silva-fernandes@cpnv.ch - 10.02.2022
  */
+
+if (isset($_SESSION['username'])) header('Location: ?action=home');
 ?>
 <!--
 	Downloaded from https://colorlib.com/wp/template/login-form-v18/
