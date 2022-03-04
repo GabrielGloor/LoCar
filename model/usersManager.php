@@ -20,6 +20,7 @@ function isUserCorrect($email,$password){
 	if(isset($jsonData[$email])){
 		if($jsonData[$email]['password'] == $password){
 			$_SESSION['username'] = $jsonData[$email]['username'];
+            $_SESSION['email'] = $email;
 			header('Location: ?action=home');
 		}else{
 			header('Location: ?action=login&incorrect=true');
