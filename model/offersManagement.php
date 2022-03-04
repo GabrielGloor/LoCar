@@ -18,7 +18,7 @@ function getOffersInfos(){
  * @brief This function is designed to create an offer on insert it in json file
  * @param $data : This param contain all the offer's datas
  */
-function createOffer($data){
+function createOffers($data){
     $jsonFile = "model/content/offers.json";
     $allOffersDatas = decodeJson($jsonFile);
 
