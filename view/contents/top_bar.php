@@ -35,9 +35,14 @@ $contactUsLink = isset($_GET['action']) && $_GET['action'] != 'home' ? "?action=
                         <li class="nav-item">
                             <a class="nav-link" href="<?=$offersLink?>"> Offres </a>
                         </li>
+                        <?php
+                        if (isset($_SESSION['username'])){?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=$createOffersLink?>"> Créer une offre </a>
                         </li>
+                        <?php
+                        }
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=$aboutUsLink?>"> A propos </a>
                         </li>
