@@ -8,6 +8,9 @@
 
 require_once "model/offersManagement.php";
 
+/**
+ * @brief This function is designed to show to the user the offer page with all the offers
+ */
 function offers(){
     $offers = getOffersInfos();
     $classNb = 0;
@@ -39,10 +42,10 @@ function showOffersInHomePage(){
         $err = "Il n'y a aucune offre actuellement";
         require "view/contents/offer_template.php";
     }else{
-        for ($showCurrentOffers = $nbOffers - 4;    $showCurrentOffers < $nbOffers; $showCurrentOffers++) {
-            $class = $showCurrentOffers%2 ? $showCurrentOffers." pair" : $showCurrentOffers." impair";
+        for ($showCurrentOffers = $nbOffers - 4; $showCurrentOffers < $nbOffers; $showCurrentOffers++) {
+            $class = $showCurrentOffers%2 ? $showCurrentOffers." impair" : $showCurrentOffers." pair";
             $name = $offersData[$showCurrentOffers]['name'];
-            $linkImg = $offersData[$showCurrentOffers]['image'];
+            $linkToImg = $offersData[$showCurrentOffers]['image'];
             $linkToDetails = "?action=offerDetails&offerId=".$offersData[$showCurrentOffers]['id'];
             $price = $offersData[$showCurrentOffers]['price'];
 
@@ -51,6 +54,10 @@ function showOffersInHomePage(){
     }
 }
 
+/**
+ * @brief This function is designed to show to the user a page with all the infos of an offer
+ * @param $id : ID of the offer get by $_GET
+ */
 function offerDetails($id){
     $offersDatas = getOffersInfos();
 
@@ -68,6 +75,12 @@ function offerDetails($id){
             require "view/offerDetails.php";
         }
     }
+}
 
+function createOffer($infos){
+    if (isset($infos['name'])){
 
+    }else{
+        require "view/createOffer.php";
+    }
 }
