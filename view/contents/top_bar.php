@@ -7,12 +7,19 @@
  * @description  Top bar for all the pages
  * @last_update  diogo.da-silva-fernandes@cpnv.ch - 10.02.2022
  */
+
+$style = isset($_GET['action']) && $_GET['action'] != 'home' ? 'style="background-color: #1a1a1a;"' : "";
+$homeLink = isset($_GET['action']) && $_GET['action'] != 'home' ? "?action=home" : "#";
+$offersLink = isset($_GET['action']) && $_GET['action'] != 'home' ? ($_GET['action'] == 'offers' ? "#" : "?action=offers") : "#offres";
+$createOffersLink = isset($_GET['action']) && $_GET['action'] != 'home' ? ($_GET['action'] == 'createOffer' ? "#" : "?action=createOffer") : "?action=createOffer";
+$aboutUsLink = isset($_GET['action']) && $_GET['action'] != 'home' ? "?action=home#a-propos" : "#a-propos";
+$contactUsLink = isset($_GET['action']) && $_GET['action'] != 'home' ? "?action=home#nous-contacter" : "#nous-contacter";
 ?>
 <!-- header section strats -->
-<header class="header_section" <?php if(isset($_GET['action']) && $_GET['action'] != 'home') echo 'style="background-color: #1a1a1a;"'?>>
+<header class="header_section" <?=$style?>>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container">
-            <a class="navbar-brand" href="?action=home">
+            <a class="navbar-brand" href="<?=$homeLink?>">
                 <i class="fas fa-car" style="color: white; font-size: 30px"></i>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,16 +30,19 @@
                 <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                     <ul class="navbar-nav  ">
                         <li class="nav-item active">
-                            <a class="nav-link" href="?action=home">Accueil <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="<?=$homeLink?>">Accueil <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#offres"> Offres </a>
+                            <a class="nav-link" href="<?=$offersLink?>"> Offres </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#a-propos"> A propos </a>
+                            <a class="nav-link" href="<?=$createOffersLink?>"> Créer une offre </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#nous-contacter">Nous contacter</a>
+                            <a class="nav-link" href="<?=$aboutUsLink?>"> A propos </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=$contactUsLink?>">Nous contacter</a>
                         </li>
                     </ul>
                 </div>
