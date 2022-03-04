@@ -37,12 +37,12 @@ function offers(){
 function showOffersInHomePage(){
     $offersData = getOffersInfos();
 
-    $nbOffers = count($offersData);
+    $nbOffers = count($offersData)-1;
     if ($nbOffers == 0){
         $err = "Il n'y a aucune offre actuellement";
         require "view/contents/offer_template.php";
     }else{
-        for ($showCurrentOffers = $nbOffers - 4; $showCurrentOffers < $nbOffers; $showCurrentOffers++) {
+        for ($showCurrentOffers = $nbOffers; $showCurrentOffers >= $nbOffers - 3; $showCurrentOffers--) {
             $class = $showCurrentOffers%2 ? $showCurrentOffers." impair" : $showCurrentOffers." pair";
             $name = $offersData[$showCurrentOffers]['name'];
             $linkToImg = $offersData[$showCurrentOffers]['image'];
@@ -77,9 +77,9 @@ function offerDetails($id){
     }
 }
 
-function createOffer($infos){
-    if (isset($infos['name'])){
-
+function createOffer($infos, $file){
+    if (isset($infos['title'])){
+        createOffers($infos, $file);
     }else{
         require "view/createOffer.php";
     }
