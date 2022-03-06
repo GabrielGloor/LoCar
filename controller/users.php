@@ -42,6 +42,34 @@ function register($inputs)
 }
 
 /**
+ * @brief This function is designed to show a page with all infos about the user.
+ * @param $username : It's the user username gived in $_GET
+ */
+function userPage($username){
+    if($username != $_SESSION['username']) header('Location: ?action=home');
+
+    $offers = getOffersInfos();
+    $class = 0;
+
+    ob_start();
+    foreach($offers as $offer){
+        if($offer['ownerEmail'] == $_SESSION['email']){
+            $class++;
+            $linkToImg = $offer['image'];
+            $linkToDetails = '?action=modifyOffer&offerId='.$offer['id'];
+            $name = $offer['name'];
+            $price = $offer['price'];
+            $btnName = 'Modifier';
+
+            require 'view/contents/offer_template.php';
+        }
+    }
+    $products = ob_get_clean();
+
+    require 'view/user.php';
+}
+
+/**
  * @brief This function is designed to end the user session
  */
 function logout()
