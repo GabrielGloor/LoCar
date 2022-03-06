@@ -21,7 +21,7 @@ if (isset($err)){
     <div class="detail-box">
         <div class="btn-box">
             <a href="<?=$linkToDetails?>">
-                Détails
+                <?=$btnName?>
             </a>
         </div>
         <div class="detail_text">
