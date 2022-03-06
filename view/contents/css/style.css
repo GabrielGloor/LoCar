@@ -278,7 +278,7 @@ a:focus {
   margin-bottom: 30px;
 }
 .car_section .col-md-6 .img-box img {
-  height: auto;
+  max-height: 100%;
   max-width: 80%;
   position: absolute;
   top: 0;
