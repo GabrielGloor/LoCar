@@ -5,7 +5,7 @@
  * @date         17.02.2022
  * @project      LoCar
  * @description  Offers view
- * @last_update  diogo.da-silva-fernandes@cpnv.ch - 17.02.2022
+ * @last_update  diogo.da-silva-fernandes@cpnv.ch
  */
 
 ob_start();
@@ -15,6 +15,17 @@ $title = 'LoCar - Offres';
 require "view/contents/top_bar.php";
 require "view/contents/offers_findSection.php";
 ?>
+
+<?php
+if(isset($_GET['offerCreated']) && $_GET['offerCreated'] == 'true'){?>
+    <p style="color: green; text-align: center;">Votre annonce a bien été crée !</p>
+<?php
+}elseif(isset($_GET['offerModified']) && $_GET['offerModified'] == 'true'){?>
+    <p style="color: green; text-align: center;">Votre annonce a bien été modifiée !</p>
+<?php
+}
+?>
+
 
 <!-- car section -->
 <section class="car_section layout_padding">

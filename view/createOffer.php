@@ -1,14 +1,12 @@
 <?php
 /**
  * @file         createOffer.php
- * @author       Diogo.DA-SILVA-FERNA
+ * @author       diogo.da-silva-fernandes@cpnv.ch
  * @date         04.03.2022
- * @project      PROJECT
- * @description  DESCRIPTION
- * @last_update  Diogo.DA-SILVA-FERNA - DATE
+ * @project      LoCar
+ * @description  Create offer view
+ * @last_update  diogo.da-silva-fernandes@cpnv.ch
  */
-
-if (!isset($_SESSION['username'])) header('Location: ?action=home');
 
 ob_start();
 $title = 'Créer une offre';
@@ -34,11 +32,11 @@ $title = 'Créer une offre';
     </div>
     <div class="form-group">
         <label for="year">Année *</label>
-        <input class="form-control" type="text" id="year" name="year" placeholder="Ex: 1998" required>
+        <input class="form-control" type="text" id="year" name="year" pattern="[1-9]{4}" placeholder="Ex: 1998" required>
     </div>
     <div class="form-group">
         <label for="price">Prix (par jour) *</label>
-        <input class="form-control" type="text" name="price" id="price" placeholder="Ex: 49.95" required>
+        <input class="form-control" type="text" name="price" id="price" pattern="[0-9]+([,\.][0-9]+)?" placeholder="Ex: 49.95" required>
     </div>
     <div class="form-group">
         <label for="img">Image *</label>

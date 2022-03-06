@@ -1,11 +1,11 @@
 <?php
 /**
  * @file         offerDetails.php
- * @author       Diogo.DA-SILVA-FERNA
+ * @author       diogo.da-silva-fernandes@cpnv.ch
  * @date         18.02.2022
- * @project      PROJECT
- * @description  DESCRIPTION
- * @last_update  Diogo.DA-SILVA-FERNA - DATE
+ * @project      LoCar
+ * @description  Offer details view
+ * @last_update  diogo.da-silva-fernandes@cpnv.ch
  */
 
 ob_start();
