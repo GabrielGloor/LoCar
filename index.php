@@ -32,10 +32,16 @@ if (isset($_GET['action'])) {
             offers();
             break;
         case 'offerDetails':
-            offerDetails($_GET['offerId']);
+            if (isset($_GET['offerId'])) offerDetails($_GET['offerId']); else header('Location: ?action=home');
             break;
         case 'createOffer':
             createOffer($_POST, $_FILES);
+            break;
+        case 'modifyOffer':
+            if (isset($_GET['offerId'])) modifyOffer($_POST, $_GET['offerId']); else header('Location: ?action=home');
+            break;
+        case 'user':
+            if (isset($_GET['username'])) userPage($_GET['username']); else header('Location: ?action=home');
             break;
         default :
             lost();
