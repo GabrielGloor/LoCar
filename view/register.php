@@ -1,11 +1,11 @@
 <?php
 /**
  * @file         register.php
- * @author       Diogo.DA-SILVA-FERNA
+ * @author       diogo.da-silva-fernandes@cpnv.ch
  * @date         11.02.2022
- * @project      PROJECT
- * @description  DESCRIPTION
- * @last_update  Diogo.DA-SILVA-FERNA - DATE
+ * @project      LoCar
+ * @description  Register view
+ * @last_update  diogo.da-silva-fernandes@cpnv.ch
  */
 
 if (isset($_SESSION['username'])) header('Location: ?action=home');

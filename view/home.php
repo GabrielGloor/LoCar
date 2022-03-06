@@ -5,7 +5,7 @@
  * @date         10.02.2022
  * @project      LoCar WEBSITE
  * @description  Home page
- * @last_update  diogo.da-silva-fernandes@cpnv.ch - 10.02.2022
+ * @last_update  diogo.da-silva-fernandes@cpnv.ch
  */
 ob_start();
 

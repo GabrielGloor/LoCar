@@ -5,7 +5,7 @@
  * @date         10.02.2022
  * @project      LoCar WEBSITE
  * @description  Gabarit
- * @last_update  diogo.da-silva-fernandes@cpnv.ch - 10.02.2022
+ * @last_update  diogo.da-silva-fernandes@cpnv.ch
  */
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
     <script src="https://kit.fontawesome.com/d8302aa554.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body onload="auto_grow(document.getElementById('desc'))">
 <?=$content?>
 
 <!-- info section -->
