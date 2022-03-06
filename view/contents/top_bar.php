@@ -52,7 +52,7 @@ $contactUsLink = isset($_GET['action']) && $_GET['action'] != 'home' ? "?action=
                     </ul>
                 </div>
                 <div class="login_btn-container ml-0 ml-lg-4 d-flex justify-content-center">
-                    <a <?php if(isset($_SESSION['username'])) echo 'href="?action=userManagement&user='.$_SESSION['username'].'"'; else echo 'href="?action=login"';?>>
+                    <a <?php if(isset($_SESSION['username'])) echo 'href="?action=user&username='.$_SESSION['username'].'"'; else echo 'href="?action=login"';?>>
                         <?php if(isset($_SESSION['username'])) echo '<i class="fa-solid fa-user" style="padding-right: 15px"></i>'.$_SESSION['username']; else echo 'Se connecter';?>
                     </a>
                 </div>
