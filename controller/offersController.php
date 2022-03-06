@@ -23,6 +23,7 @@ function offers(){
         $price = $offer['price'];
         $id = $offer['id'];
         $linkToDetails = "?action=offerDetails&offerId=".$id;
+        $btnName = 'Détails';
 
         require "view/contents/offer_template.php";
         $classNb++;
@@ -42,12 +43,13 @@ function showOffersInHomePage(){
         $err = "Il n'y a aucune offre actuellement";
         require "view/contents/offer_template.php";
     }else{
-        for ($showCurrentOffers = $nbOffers; $showCurrentOffers >= $nbOffers - 3; $showCurrentOffers--) {
-            $class = $showCurrentOffers%2 ? $showCurrentOffers." impair" : $showCurrentOffers." pair";
+        for ($showCurrentOffers = $nbOffers; $showCurrentOffers >= $nbOffers-3; $showCurrentOffers--) {
+            $class = ($showCurrentOffers-($nbOffers-4))%2 ? ($showCurrentOffers-($nbOffers-4))." pair" : ($showCurrentOffers-($nbOffers-4))." impair";
             $name = $offersData[$showCurrentOffers]['name'];
             $linkToImg = $offersData[$showCurrentOffers]['image'];
             $linkToDetails = "?action=offerDetails&offerId=".$offersData[$showCurrentOffers]['id'];
             $price = $offersData[$showCurrentOffers]['price'];
+            $btnName = 'Détails';
 
             require "view/contents/offer_template.php";
         }
@@ -78,9 +80,45 @@ function offerDetails($id){
 }
 
 function createOffer($infos, $file){
+    if (!isset($_SESSION['username'])) header('Location: ?action=home');
+
     if (isset($infos['title'])){
         createOffers($infos, $file);
     }else{
         require "view/createOffer.php";
+    }
+}
+
+function modifyOffer($infos, $offerId){
+    if (!isset($_SESSION['username'])) header('Location: ?action=home');
+
+    $offers = getOffersInfos();
+    $owner = null;
+        
+    foreach($offers as $offer){
+        if($offer['id'] == $offerId){
+            if($offer['ownerEmail'] != $_SESSION['email']){
+                header('Location: ?action=home');
+            }else{
+                $owner = true;
+            }
+        }
+    }
+
+    if (isset($infos['title'])){
+        modifyOffers($infos,$offerId);
+    }else{
+        foreach($offers as $offer){
+            if($offer['id'] == $offerId){
+                $name = $offer['name'];
+                $town = $offer['town'];
+                $brand = $offer['brand'];
+                $desc = $offer['description'];
+                $year = $offer['year'];
+                $price = $offer['price'];
+            }
+        }
+
+        require "view/modifyOffer.php";
     }
 }

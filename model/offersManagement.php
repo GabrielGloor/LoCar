@@ -16,15 +16,16 @@ function getOffersInfos(){
 
 /**
  * @brief This function is designed to create an offer on insert it in json file
- * @param $data : This param contain all the offer's datas
+ * @param $offerData : This param contain all the offer's datas
+ * @param $file : This param contain the informations about the offer image
  */
 function createOffers($offerData, $file){
     $target_dir = "model/content/offers_img/";
     $jsonFile = "model/content/offers.json";
-    $allOffersDatas = decodeJson($jsonFile);
+    $allOffersDatas = getOffersInfos();
 
     foreach ($allOffersDatas as $offerDatas){
-        if ($offerDatas['name'] == $offerData['name']){
+        if ($offerDatas['name'] == $offerData['title']){
             header('Location: ?action=offerCreate&exists=true');
         }
     }
@@ -58,5 +59,32 @@ function createOffers($offerData, $file){
 
     encodeJson($allOffersDatas, $jsonFile);
 
-    header('Location: ?action=home');
+    header('Location: ?action=offers&offerCreated=true');
+}
+
+/**
+ * @brief This function is designed to modify an offer
+ * @param $offerData : This param contain all the offer's datas
+ * @param $offerId : This param is the offer id. It will be used to fill the form with the data already existing for example
+ */
+function modifyOffers($offerData, $offerId){
+    $jsonFile = "model/content/offers.json";
+    $allOffersDatas = getOffersInfos();
+    $offerModified = null;
+
+    foreach ($allOffersDatas as $index => $offerDatas){
+        if ($offerDatas['id'] == $offerId){
+            $allOffersDatas[$index]['name'] = $offerData['title'];
+            $allOffersDatas[$index]['price'] = floatval($offerData['price']);
+            $allOffersDatas[$index]['brand'] = $offerData['brand'];
+            $allOffersDatas[$index]['description'] = $offerData['desc'];
+            $allOffersDatas[$index]['town'] = $offerData['town'];
+            $allOffersDatas[$index]['year'] = intval($offerData['year']);
+            break;
+        }
+    }
+
+    encodeJson($allOffersDatas, $jsonFile);
+
+    header('Location: ?action=offers&offerModified=true');
 }
