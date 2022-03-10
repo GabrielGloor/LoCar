@@ -5,7 +5,7 @@
         "price" : 49.95,
         "description" : "- 5 places\n- Radio CD\n- Direction assistée\n- GPS",
         "town" : "1462 Yvonnand (VD)",
-        "image" : "model/content/offers_img/audi.jpg",
+        "image" : "model/content/offers_img/192168.jpg",
         "brand" : "Audi",
         "ownerEmail": "Romainhd.19@gmail.com",
         "year" : 2004
@@ -16,7 +16,7 @@
         "price" : 44.95,
         "description" : "- 5 places\n- Type de carburant: électrique\n- Alarme antivol\n- Télephonie avec chargement sans fils\n- Informations traffic en temps réel",
         "town" : "1337 Vallorbe (VD)",
-        "image" : "model/content/offers_img/BMW-petite.jpg",
+        "image" : "model/content/offers_img/192169.jpg",
         "brand" : "BMW",
         "ownerEmail": "Diogo.DA-SILVA-FERNANDES@cpnv.ch",
         "year" : 2021
@@ -27,7 +27,7 @@
         "price" : 75.95,
         "description" : "- 1 place\n- Tableau de bord plus complet\n- Conduite assistée\n- Sportive et utilisable",
         "town" : "1400 Yverdon-les-Bains (VD)",
-        "image" : "model/content/offers_img/ducati-moto.jpg",
+        "image" : "model/content/offers_img/192170.jpg",
         "brand" : "Ducati",
         "ownerEmail": "gabriel.gloor@bluewin.ch",
         "year" : 2021
@@ -38,7 +38,7 @@
         "price" : 39.95,
         "description" : "- 4 places\n- Radars de recul\n- Type de carburant: électrique\n- Toit vitré panoramique\n- Projecteurs antibrouillard",
         "town" : "1445 Vuitboeuf (VD)",
-        "image" : "model/content/offers_img/fiat.jpg",
+        "image" : "model/content/offers_img/192172.jpg",
         "brand" : "Fiat",
         "ownerEmail": "Romainhd.19@gmail.com",
         "year" : 2021
@@ -49,7 +49,7 @@
         "price" : 69.95,
         "description" : "- 2 places\n- Tableau de bord LCD\n- Poignées chauffantes\n- Assistance au pilotage",
         "town" : "1009 Pully (VD)",
-        "image" : "model/content/offers_img/honda-moto.jpg",
+        "image" : "model/content/offers_img/192173.jpg",
         "brand" : "Honda",
         "ownerEmail": "gabriel.gloor@bluewin.ch",
         "year" : 2021
@@ -60,7 +60,7 @@
         "price" : 74.95,
         "description" : "- 4 places\n- Audio Bluetooth\n- Direction assistée\n- Capacité de remorquage",
         "town" : "1304 Dizy (VD)",
-        "image" : "model/content/offers_img/Jeep.jpg",
+        "image" : "model/content/offers_img/192174.jpg",
         "brand" : "Jeep",
         "ownerEmail": "Diogo.DA-SILVA-FERNANDES@cpnv.ch",
         "year" : 2020
@@ -71,7 +71,7 @@
         "price" : 34.95,
         "description" : "- 5 places\n- Direction assistée\n- GPS\n- Lecteur CD",
         "town" : "1446 Baulmes (VD)",
-        "image" : "model/content/offers_img/peugeot.jpg",
+        "image" : "model/content/offers_img/192175.jpg",
         "brand" : "Peugeot",
         "ownerEmail": "Romaihd19@gmail.com",
         "year" : 2007
@@ -82,7 +82,7 @@
         "price" : 79.95,
         "description" : "- 8 Places\n- Sièges chauffants\n- Kit fumeur\n- Support de smartphone",
         "town" : "1350 Orbe (VD)",
-        "image" : "model/content/offers_img/renault.jpg",
+        "image" : "model/content/offers_img/192176.jpg",
         "brand" : "Renault",
         "ownerEmail": "gabriel.gloor@bluewin.ch",
         "year" : 2010
@@ -93,7 +93,7 @@
         "price" : 69.95,
         "description" : "- 5 Places\n- Écran à interface tactile\n- Système de son premium à 8 enceintes\n- Connexion au smartphone",
         "town" : "1446 Baulmes (VD)",
-        "image" : "model/content/offers_img/pick-up.jpg",
+        "image" : "model/content/offers_img/192177.jpg",
         "brand" : "Ford",
         "ownerEmail": "Romaihd19@gmail.com",
         "year" : 2021
@@ -104,7 +104,7 @@
         "price" : 99.95,
         "description" : "- 5 Places\n- Type de carburant: électrique\n- Écran de navigation\n- Visualisation de la circulation en temps réel",
         "town" : "1373 Chavornay (VD)",
-        "image" : "model/content/offers_img/tesla.jpg",
+        "image" : "model/content/offers_img/192179.jpg",
         "brand" : "Tesla",
         "ownerEmail": "Diogo.DA-SILVA-FERNANDES@cpnv.ch",
         "year" : 2021
@@ -115,7 +115,7 @@
         "price" : 89.95,
         "description" : "- 5 Places\n- Écran tactile\n- Kit main libre\n- Type de carburant: hybride ",
         "town" : "1324 Premier (VD) ",
-        "image" : "model/content/offers_img/toyota.jpg",
+        "image" : "model/content/offers_img/192180.jpg",
         "brand" : "Toyota",
         "ownerEmail": "Diogo.DA-SILVA-FERNANDES@cpnv.ch",
         "year" : 2021
