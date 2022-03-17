@@ -128,5 +128,5 @@ function modifyOffer($infos, $offerId){
  */
 function deleteOffer($offerId){
     deleteOffers($offerId);
-    header("Location: ?action=users&username=".$_SESSION['username']."&deleted=true");
+    header("Location: ?action=user&username=".$_SESSION['username']."&deleted=true");
 }
