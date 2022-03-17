@@ -88,3 +88,21 @@ function modifyOffers($offerData, $offerId){
 
     header('Location: ?action=offers&offerModified=true');
 }
+
+function deleteOffers($offerId){
+    $datas = getOffersInfos();
+    $index = NULL;
+    $file = "model/content/offers.json";
+
+    foreach ($datas as $key=>$data){
+        if ($data['id'] == $offerId){
+            $index = $key;
+            break;
+        }
+    }
+
+    unset($datas[$index]);
+
+    encodeJson($datas, $file);
+
+}
