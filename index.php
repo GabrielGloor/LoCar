@@ -43,6 +43,9 @@ if (isset($_GET['action'])) {
         case 'user':
             if (isset($_GET['username'])) userPage($_GET['username']); else header('Location: ?action=home');
             break;
+        case 'deleteOffer' :
+            if (isset($_GET['offerId'])) deleteOffer($_GET['offerId']); else header("Location: ?action=home");
+            break;
         default :
             lost();
     }
