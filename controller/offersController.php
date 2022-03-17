@@ -122,3 +122,11 @@ function modifyOffer($infos, $offerId){
         require "view/modifyOffer.php";
     }
 }
+
+/**
+ * @param $offerId
+ */
+function deleteOffer($offerId){
+    deleteOffers($offerId);
+    header("Location: ?action=offers&deleted=true");
+}
