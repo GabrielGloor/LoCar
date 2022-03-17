@@ -64,6 +64,9 @@ function userPage($username){
             require 'view/contents/offer_template.php';
         }
     }
+    if ($class == 0){
+        echo "<h2>Vous n'avez aucune offre !</h2>";
+    }
     $products = ob_get_clean();
 
     require 'view/user.php';
