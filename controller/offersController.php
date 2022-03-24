@@ -21,8 +21,8 @@ function offers(){
         $name = $offer['name'];
         $linkToImg = $offer['image'];
         $price = $offer['price'];
-        $id = $offer['id'];
-        $linkToDetails = "?action=offerDetails&offerId=".$id;
+        $offerId = $offer['id'];
+        $linkToDetails = "?action=offerDetails&offerId=".$offerId;
         $btnName = 'Détails';
 
         require "view/contents/offer_template.php";
@@ -83,7 +83,19 @@ function createOffer($infos, $file){
     if (!isset($_SESSION['username'])) header('Location: ?action=home');
 
     if (isset($infos['title'])){
-        createOffers($infos, $file);
+        if ((int) $infos['year'] > (int) date("Y") || (int) $infos['year'] < 1920){
+            $titleO = $infos['title'];
+            $town = $infos['town'];
+            $brand = $infos['brand'];
+            $desc = $infos['desc'];
+            $year = $infos['year'];
+            $price = $infos['price'];
+            $yearErr = "L'année rentrée est erronée ! (supérieur 1920 | inférieur Année actuelle)";
+
+            require "view/createOffer.php";
+        }else{
+            createOffers($infos, $file);
+        }
     }else{
         require "view/createOffer.php";
     }
@@ -106,7 +118,19 @@ function modifyOffer($infos, $offerId){
     }
 
     if (isset($infos['title'])){
-        modifyOffers($infos,$offerId);
+        if ((int) $infos['year'] > (int) date("Y") || (int) $infos['year'] < 1920){
+            $name = $infos['title'];
+            $town = $infos['town'];
+            $brand = $infos['brand'];
+            $desc = $infos['desc'];
+            $year = $infos['year'];
+            $price = $infos['price'];
+            $yearErr = "L'année rentrée est erronée ! (supérieur 1920 | inférieur Année actuelle)";
+
+            require "view/modifyOffer.php";
+        }else {
+            modifyOffers($infos, $offerId);
+        }
     }else{
         foreach($offers as $offer){
             if($offer['id'] == $offerId){
@@ -128,5 +152,5 @@ function modifyOffer($infos, $offerId){
  */
 function deleteOffer($offerId){
     deleteOffers($offerId);
-    header("Location: ?action=users&username=".$_SESSION['username']."&deleted=true");
+    header("Location: ?action=user&username=".$_SESSION['username']."&deleted=true");
 }
