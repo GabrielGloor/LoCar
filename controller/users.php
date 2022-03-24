@@ -56,7 +56,7 @@ function userPage($username){
         if($offer['ownerEmail'] == $_SESSION['email']){
             $class++;
             $linkToImg = $offer['image'];
-            $linkToDetails = '?action=modifyOffer&offerId='.$offer['id'];
+            $offerId = $offer['id'];
             $name = $offer['name'];
             $price = $offer['price'];
             $btnName = 'Modifier';
