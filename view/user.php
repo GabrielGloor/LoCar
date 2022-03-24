@@ -22,6 +22,14 @@ require "view/contents/top_bar.php";
             </h2>
             <hr>
         </div>
+
+        <?php
+        if (isset($_GET['deleted']) && $_GET['deleted'] == 'true'){?>
+            <p style="color: green; text-align: center;">Votre annonce a bien été supprimée !</p>
+        <?php
+        }
+        ?>
+
         <div class="layout_padding">
             <div class="row">
                 <?=$products?>
