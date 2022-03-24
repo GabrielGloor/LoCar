@@ -242,7 +242,7 @@ a:focus {
       @include second-font();
       position: relative;
     }
-  
+
     .btn-box {
       a {
         @include hero_btn($primary1, $white, 12px, 55px);
