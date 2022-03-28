@@ -32,11 +32,14 @@ $title = 'Modifier une offre';
     </div>
     <div class="form-group">
         <label for="year">Année *</label>
-        <input class="form-control" type="text" id="year" name="year" required value="<?=$year?>">
+        <input class="form-control" type="text" id="year" name="year" pattern="[1-2]+[0,9]+[0-9]+[0-9]" required value="<?=$year?>">
+        <?php if (isset($yearErr)):?>
+        <p style="margin-top: 5px; color: red; font-size: 10px"><?=$yearErr?></p>
+        <?php endif; ?>
     </div>
     <div class="form-group">
         <label for="price">Prix (par jour) *</label>
-        <input class="form-control" type="text" name="price" id="price" pattern="[0-9]+([.][0-9]+)?" required value="<?=$price?>">
+        <input class="form-control" type="text" name="price" id="price" pattern="[1-9]+([,\.][0-9]+)?" required value="<?=$price?>">
     </div>
     <button class="btn btn-primary" type="submit">Modifier</button>
 </form>

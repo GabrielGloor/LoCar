@@ -38,7 +38,7 @@ function createOffers($offerData, $file){
     $file['img']['name'] = $id.substr($file['img']['name'],strpos($file['img']['name'],'.'),null);
     $image = $target_dir . basename($file["img"]["name"]);
     $name = $offerData['title'];
-    $price = floatval($offerData['price']);
+    $price = number_format(floatval($offerData['price']),2);
     $brand = $offerData['brand'];
     $description = $offerData['desc'];
     $town = $offerData['town'];
@@ -79,7 +79,7 @@ function modifyOffers($offerData, $offerId){
     foreach ($allOffersDatas as $index => $offerDatas){
         if ($offerDatas['id'] == $offerId){
             $allOffersDatas[$index]['name'] = $offerData['title'];
-            $allOffersDatas[$index]['price'] = floatval($offerData['price']);
+            $allOffersDatas[$index]['price'] = number_format(floatval($offerData['price']),2);
             $allOffersDatas[$index]['brand'] = $offerData['brand'];
             $allOffersDatas[$index]['description'] = $offerData['desc'];
             $allOffersDatas[$index]['town'] = $offerData['town'];

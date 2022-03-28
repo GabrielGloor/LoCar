@@ -20,9 +20,14 @@ if (isset($err)){
     </div>
     <div class="detail-box">
         <div class="btn-box">
-            <a href="<?=$linkToDetails?>">
+            <a href="?action=<?php if ($_GET['action'] == 'user'){?>modifyOffer<?php }else{ ?>offerDetails<?php } ?>&offerId=<?=$offerId?>">
                 <?=$btnName?>
             </a>
+            <?php if ($_GET['action'] == 'user'){?>
+            <br><a style="margin-top: 5px; background-color: red" href="?action=deleteOffer&offerId=<?=$offerId?>">
+                Supprimer
+            </a>
+            <?php } ?>
         </div>
         <div class="detail_text">
             <div class="name">
