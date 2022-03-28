@@ -8,6 +8,10 @@
 
 require_once "model/json.php";
 
+/**
+ * @brief This function is designed to take offers infos in the json data file
+ * @return mixed This function return the datas of the offers
+ */
 function getOffersInfos(){
     $jsonFile = "model/content/offers.json";
     $offersInfos = decodeJson($jsonFile);
@@ -89,6 +93,10 @@ function modifyOffers($offerData, $offerId){
     header('Location: ?action=offers&offerModified=true');
 }
 
+/**
+ * @brief This function is designed to delete offers from his code
+ * @param $offerId : Is the idd of the offer to delete
+ */
 function deleteOffers($offerId){
     $datas = getOffersInfos();
     $index = NULL;
