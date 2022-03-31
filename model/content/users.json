@@ -1,1 +1,25 @@
-{"RHDL@cpnv.ch":{"username":"RHDL","password":"Pa$$w0rd"},"DDS@cpnv.ch":{"username":"DDS","password":"Pa$$w0rd"},"GGR@cpnv.ch":{"username":"GGR","password":"Pa$$w0rd"},"asd@cpnv.ch":{"username":"asd","password":"Pa$$w0rd"}}
+{
+    "RHDL@cpnv.ch":
+    {
+        "username":"RHDL",
+        "password":"Pa$$w0rd"
+    },
+    
+    "DDS@cpnv.ch":
+    {
+        "username":"DDS",
+        "password":"Pa$$w0rd"
+    },
+
+    "GGR@cpnv.ch":
+    {
+        "username":"GGR",
+        "password":"Pa$$w0rd"
+    },
+
+    "asd@cpnv.ch":
+    {
+        "username":"asd",
+        "password":"Pa$$w0rd"
+    }
+}
