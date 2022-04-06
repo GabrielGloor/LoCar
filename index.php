@@ -9,6 +9,7 @@
 require "controller/users.php";
 require "controller/nav.php";
 require "controller/offersController.php";
+require "controller/emails.php";
 
 
 session_start();
@@ -29,7 +30,7 @@ if (isset($_GET['action'])) {
             register($_POST);
             break;
         case 'offers':
-            offers();
+            if(isset($_GET['search']) || isset($_GET['prices'])) offers($_GET); else offers();
             break;
         case 'offerDetails':
             if (isset($_GET['offerId'])) offerDetails($_GET['offerId']); else header('Location: ?action=home');
@@ -45,6 +46,9 @@ if (isset($_GET['action'])) {
             break;
         case 'deleteOffer' :
             if (isset($_GET['offerId'])) deleteOffer($_GET['offerId']); else header("Location: ?action=home");
+            break;
+        case 'email':
+            mail_c($_POST,$_GET['offerId']);
             break;
         default :
             lost();
