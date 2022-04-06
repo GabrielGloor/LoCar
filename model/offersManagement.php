@@ -12,9 +12,37 @@ require_once "model/json.php";
  * @brief This function is designed to take offers infos in the json data file
  * @return mixed This function return the datas of the offers
  */
-function getOffersInfos(){
+function getOffersInfos($filters = ""){
     $jsonFile = "model/content/offers.json";
     $offersInfos = decodeJson($jsonFile);
+    $indexes = array();
+
+    if($filters != ""){
+
+        if($filters['search'] != ''){
+            foreach($offersInfos as $index=>$offer){
+                if(strpos($offer['town'],$filters['search']) == false){
+                    array_push($indexes,$index);
+                }
+            }
+
+            foreach($indexes as $index){
+                unset($offersInfos[$index]);
+            }
+        }
+
+        if($filters['prices'] != ''){
+            if($filters['prices'] == 'asc'){
+                $prices = array_column($offersInfos, 'price');
+                array_multisort($prices, SORT_ASC, $offersInfos);
+            }elseif($filters['prices'] == 'desc'){
+                $prices = array_column($offersInfos, 'price');
+                array_multisort($prices, SORT_DESC, $offersInfos);
+            }
+        }
+        
+    }
+
     return $offersInfos;
 }
 

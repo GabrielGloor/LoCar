@@ -11,23 +11,29 @@ require_once "model/offersManagement.php";
 /**
  * @brief This function is designed to show to the user the offer page with all the offers
  */
-function offers(){
-    $offers = getOffersInfos();
+function offers($filters = null){
+    $offers = getOffersInfos($filters);
     $classNb = 0;
 
     ob_start();
-    foreach ($offers as $offer){
-        $class = $classNb%2 ? ($classNb+1)." pair" : ($classNb+1)." impair";
-        $name = $offer['name'];
-        $linkToImg = $offer['image'];
-        $price = $offer['price'];
-        $offerId = $offer['id'];
-        $linkToDetails = "?action=offerDetails&offerId=".$offerId;
-        $btnName = 'Détails';
+    
+    if(!empty($offers)){
+        foreach ($offers as $offer){
+            $class = $classNb%2 ? ($classNb+1)." pair" : ($classNb+1)." impair";
+            $name = $offer['name'];
+            $linkToImg = $offer['image'];
+            $price = $offer['price'];
+            $offerId = $offer['id'];
+            $linkToDetails = "?action=offerDetails&offerId=".$offerId;
+            $btnName = 'Détails';
 
-        require "view/contents/offer_template.php";
-        $classNb++;
+            require "view/contents/offer_template.php";
+            $classNb++;
+        }
+    }else{
+        echo "<h2>Aucune offre correspond à vos filtres.</h2>";
     }
+    
     $products = ob_get_clean();
     require "view/offers.php";
 }
@@ -50,6 +56,7 @@ function showOffersInHomePage(){
             $linkToDetails = "?action=offerDetails&offerId=".$offersData[$showCurrentOffers]['id'];
             $price = $offersData[$showCurrentOffers]['price'];
             $btnName = 'Détails';
+            $offerId = $offersData[$showCurrentOffers]['id'];
 
             require "view/contents/offer_template.php";
         }
@@ -72,6 +79,7 @@ function offerDetails($id){
             $brand = $offerData['brand'];
             $year = $offerData['year'];
             $description = $offerData['description'];
+            $ownerEmail = $offerData['ownerEmail'];
             $title = $name;
 
             require "view/offerDetails.php";
