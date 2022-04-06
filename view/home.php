@@ -96,26 +96,37 @@ $title = 'LoCar - Accueil';
         <div class="layout_padding">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="#" method="post">
+                    <form action="?action=email" method="post">
                         <div class="contact_form-container">
                             <div>
                                 <div>
-                                    <input type="text" placeholder="Nom">
+                                    <input type="text" placeholder="Nom" name="name" required>
                                 </div>
                                 <div>
-                                    <input type="text" placeholder="Numéro de téléphone">
+                                    <input type="text" placeholder="Numéro de téléphone" name="telNumber" required pattern="[0-9]{10}">
                                 </div>
                                 <div>
-                                    <input type="email" placeholder="Email">
+                                    <input type="email" name="mail" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                                 </div>
                                 <div class="mt-5">
-                                    <textarea name="msg" cols="30" rows="10" placeholder="Message"></textarea>
+                                    <textarea name="msg" cols="30" rows="10" placeholder="Message" required></textarea>
                                 </div>
                                 <div class="mt-5 d-flex justify-content-center justify-content-sm-start">
                                     <button type="submit">
                                         Envoyer
                                     </button>
                                 </div>
+                                <?php
+                                        if(isset($_GET['confirm']) && $_GET['confirm'] == 'true'){
+                                    ?>
+                                        <p style="color: green; text-align: center; margin-left: -40px; margin-top: 20px">Votre email a bien été transmis à notre équipe. Vous avez également reçu un email de confirmation.</p>
+                                    <?php 
+                                        }elseif(isset($_GET['confirm']) && $_GET['confirm'] == 'false'){
+                                    ?>
+                                        <p style="color: red; text-align: center; margin-left: -40px; margin-top: 20px">Votre email n'a pas pu être livré. Veuillez réessayer plus tard.</p>
+                                    <?php
+                                        }
+                                    ?>
                             </div>
 
                         </div>
