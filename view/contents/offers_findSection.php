@@ -20,13 +20,13 @@
             </div>
             <div class=" form-row">
                 <div class="col-sm-6">
-                    <input type="text" name="search" class="form-control" placeholder="Lieu">
+                    <input type="text" name="search" class="form-control" placeholder="Lieu" <?php if(isset($_GET['search']) && $_GET['search'] != ''){?>value="<?=$_GET['search']?>"<?php } ?>>
                 </div>
                 <div class="col-sm-6">
                     <select name="prices" id="" class="form-control">
-                        <option value="">Tri</option>
-                        <option value="">Prix croissant</option>
-                        <option value="">Prix décroissant</option>
+                        <option value="" <?php if(isset($_GET['prices']) && $_GET['prices'] == ''){?>selected<?php } ?>>Tri</option>
+                        <option value="asc" <?php if(isset($_GET['prices']) && $_GET['prices'] == 'asc'){?>selected<?php } ?>>Prix croissant</option>
+                        <option value="desc" <?php if(isset($_GET['prices']) && $_GET['prices'] == 'desc'){?>selected<?php } ?>>Prix décroissant</option>
                     </select>
                 </div>
             </div>
