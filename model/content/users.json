@@ -1,0 +1,19 @@
+{
+    "RHDL@cpnv.ch":
+    {
+        "username":"RHDL",
+        "password":"Pa$$w0rd"
+    },
+    
+    "DDS@cpnv.ch":
+    {
+        "username":"DDS",
+        "password":"Pa$$w0rd"
+    },
+
+    "GGR@cpnv.ch":
+    {
+        "username":"GGR",
+        "password":"Pa$$w0rd"
+    }
+}
