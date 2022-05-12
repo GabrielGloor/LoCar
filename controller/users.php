@@ -12,11 +12,11 @@ require "model/usersManager.php";
  * @brief   This function is designed to verify if the requirements datas are filled
  * @param $inputs : Is the logs of the users
  */
-function login($inputs)
+function login($userEmail, $userPsw)
 {
-    if (isset($inputs['inputEmail']) && isset($inputs['inputPswd']))
+    if (isset($userEmail) && isset($userPsw))
     {
-        isUserCorrect($inputs['inputEmail'],$inputs['inputPswd']);
+        isUserCorrect($userEmail,$userPsw);
     }
     else
     {
@@ -28,11 +28,11 @@ function login($inputs)
  * @brief This function is designed to verify if the inputs are filled. If not it will show the register page, else it will register the user. (WIP)
  * @param $inputs : It is the user input in the register form
  */
-function register($inputs)
+function register($username, $userEmail, $userPsw, $userPswCheck)
 {
-    if (isset($inputs['inputUsername']) && isset($inputs['inputEmail']) && isset($inputs['inputPswd']) && isset($inputs['inputPswdTwo'])){
-        if ($inputs['inputPswd'] == $inputs['inputPswdTwo']){
-            userRegister($inputs['inputUsername'], $inputs['inputEmail'], $inputs['inputPswd']);
+    if (isset($username) && isset($userEmail) && isset($userPsw) && isset($userPswCheck)){
+        if ($userPsw == $userPswCheck){
+            userRegister($username, $userEmail, $userPsw);
         }else{
             header('Location: ?action=register&incorrect=true&badPassword=true');
         }

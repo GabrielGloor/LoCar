@@ -21,13 +21,13 @@ if (isset($_GET['action'])) {
             home();
             break;
         case 'login' :
-            login($_POST);
+            login($_POST['inputEmail'], $_POST['inputPswd']);
             break;
         case 'logout' :
             logout();
             break;
         case 'register':
-            register($_POST);
+            register($_POST['inputUsername'], $_POST['inputEmail'], $_POST['inputPswd'], $_POST['inputPswdTwo']);
             break;
         case 'offers':
             if(isset($_GET['search']) || isset($_GET['prices'])) offers($_GET); else offers();
