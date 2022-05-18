@@ -1,16 +1,14 @@
 <?php
 /**
+ * @Description : This file is designed to be the application's router
  * @Author : Romain Humbert-Droz-Laurent
  * @Date : 10.02.2022
- * @Version : 0.1
- * @Description : This file is designed for redirecting to the adaptate fonction
  */
 
 require "controller/users.php";
 require "controller/nav.php";
-require "controller/offersController.php";
+require "controller/offers.php";
 require "controller/emails.php";
-
 
 session_start();
 
@@ -21,37 +19,37 @@ if (isset($_GET['action'])) {
             home();
             break;
         case 'login' :
-            login($_POST['inputEmail'], $_POST['inputPswd']);
+            login($_POST['inputEmail'], $_POST['inputPwd']);
             break;
         case 'logout' :
             logout();
             break;
         case 'register':
-            register($_POST['inputUsername'], $_POST['inputEmail'], $_POST['inputPswd'], $_POST['inputPswdTwo']);
+            register($_POST['inputUsername'], $_POST['inputEmail'], $_POST['inputPwd'], $_POST['inputPwdValidation']);
             break;
         case 'offers':
-            if(isset($_GET['search']) || isset($_GET['prices'])) offers($_GET); else offers();
+            offers($_GET);
             break;
         case 'offerDetails':
-            if (isset($_GET['offerId'])) offerDetails($_GET['offerId']); else header('Location: ?action=home');
+            offerDetails($_GET);
             break;
         case 'createOffer':
             createOffer($_POST, $_FILES);
             break;
         case 'modifyOffer':
-            if (isset($_GET['offerId'])) modifyOffer($_POST, $_GET['offerId']); else header('Location: ?action=home');
+            modifyOffer($_POST, $_GET);
             break;
         case 'user':
-            if (isset($_GET['username'])) userPage($_GET['username']); else header('Location: ?action=home');
+            userPage($_GET);
             break;
         case 'deleteOffer' :
-            if (isset($_GET['offerId'])) deleteOffer($_GET['offerId']); else header("Location: ?action=home");
+            deleteOffer($_GET);
             break;
         case 'email':
-            mail_c($_POST,$_GET['offerId']);
+            mail_c($_POST,$_GET);
             break;
         default :
-            lost();
+            home(true);
     }
 } else {
     home();
