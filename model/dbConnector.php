@@ -6,6 +6,10 @@
  * @Description : This file is designed for connect to the DataBase
  */
 
+/**
+ * @param $query
+ * @return array|false
+ */
 function executeQuerySelect($query)
 {
     //$queryResult = NULL;
@@ -22,6 +26,9 @@ function executeQuerySelect($query)
     return $queryResult;
 }
 
+/**
+ * @return PDO|null
+ */
 function openDBconnection()
 {
     $tempDBConnection = NULL;

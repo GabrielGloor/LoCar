@@ -7,6 +7,7 @@
  */
 
 require 'json.php';
+require "model/dbConnector.php";
 
 /**
  * @brief   This function is designed to verify if the login form of the user is correct
@@ -14,12 +15,15 @@ require 'json.php';
  * @param $password     User Password
  */
 function isUserCorrect($email,$password){
-	$json = 'model/content/users.json';
-	$jsonData = decodeJson($json);
+	//$json = 'model/content/users.json';
+	//$jsonData = decodeJson($json);
+
+    $querySelect = "SELECT";
+    $userData = executeQuerySelect($querySelect);
 	
-	if(isset($jsonData[$email])){
-		if($jsonData[$email]['password'] == $password){
-			$_SESSION['username'] = $jsonData[$email]['username'];
+	if(isset($userData['email'])){
+		if(password_verify($userData['password'], password_hash($password))){
+			$_SESSION['username'] = $userData['email']['username'];
             $_SESSION['email'] = $email;
 			header('Location: ?action=home');
 		}else{
@@ -28,7 +32,7 @@ function isUserCorrect($email,$password){
 	}else{
 		header('Location: ?action=login&incorrect=true');
 	}
-}
+} //Edited
 
 /**
  * @brief This function is designed to register the user to a json file.
@@ -37,25 +41,18 @@ function isUserCorrect($email,$password){
  * @param $password : User password
  */
 function userRegister($username, $email, $password){
-    $json = 'model/content/users.json';
-    $jsonData = decodeJson($json);
+    //$json = 'model/content/users.json';
+    //$jsonData = decodeJson($json);
 
-    if(isset($jsonData[$email])){
+    $querySelect = "SELECT"; //Check if user already exist (Email & Username)
+    $queryResult = executeQuerySelect($querySelect);
+
+    if(isset($queryResult['email'])){
         header('Location: ?action=register&incorrect=true&userExists=true');
     }else{
-        foreach ($jsonData as $array){
-            if ($array["username"] == $username){
-                header('Location: ?action=register&incorrect=true&userExists=true');
-                return;
-            }
-        }
-
-        $newUser = array("username" => $username,"password"=>$password);
-
-        $jsonData[$email] = $newUser;
-
-        encodeJson($jsonData, $json);
+        $queryInsert = "INSERT INTO";
+        executeQueryInsert($queryInsert);
 
         header('Location: ?action=login&userCreated=true');
     }
-}
+} //Edited
