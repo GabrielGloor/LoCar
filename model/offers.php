@@ -113,10 +113,9 @@ function modifyOffers($offerData, $offerId){
     $town = $offerData['town'];
     $year = intval($offerData['year']);
     $userId = executeQuerySelect("SELECT id FROM users WHERE email = ".$strSeparator.$_SESSION['email'].$strSeparator);
-    $img = "model/content/offers_img";
 
     $queryUpdateP1 = "UPDATE offers SET title = ".$strSeparator.$title.$strSeparator.", description = ".$strSeparator.$description.$strSeparator.", price = ".$strSeparator.$price.$strSeparator;
-    $queryUpdateP2 = ", town = ".$strSeparator.$town.$strSeparator.", brand = ".$strSeparator.$brand.$strSeparator.", year = ".$strSeparator.$year.$strSeparator.", image = ".$strSeparator.$img.$strSeparator;
+    $queryUpdateP2 = ", town = ".$strSeparator.$town.$strSeparator.", brand = ".$strSeparator.$brand.$strSeparator.", year = ".$strSeparator.$year.$strSeparator;
     $queryUpdateP3 = ", user_id = ".$strSeparator.$userId.$strSeparator." WHERE offerId = ".$offerId;
     $queryUpdate = $queryUpdateP1.$queryUpdateP2.$queryUpdateP3;
     executeQueryUpdate($queryUpdate);
@@ -136,7 +135,7 @@ function modifyOffers($offerData, $offerId){
     //encodeJson($allOffersDatas, $jsonFile);
 
     header('Location: ?action=offers&offerModified=true');
-} //Edited
+} //Ended
 
 /**
  * @brief This function is designed to delete offers from his code
@@ -146,8 +145,9 @@ function deleteOffers($offerId){
     //$datas = getOffersInfos();
     //$index = NULL;
     //$file = "model/content/offers.json";
+    $strseparator = '\'';
 
-    $queryDelete = "DELETE"; // Delete where offerid = $offerId
-    executeQuerySelect($queryDelete);
+    $queryDelete = "DELETE FROM offers WHERE offerNumber = ".$strseparator.$offerId.$strseparator; // Delete where offerid = $offerId
+    executeQueryDelete($queryDelete);
 
-} //Edited
+} //Ended

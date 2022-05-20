@@ -18,7 +18,7 @@ function isUserCorrect($email,$password){
 	//$json = 'model/content/users.json';
 	//$jsonData = decodeJson($json);
 
-    $querySelect = "SELECT";
+    $querySelect = "SELECT username, email, password FROM users";
     $userData = executeQuerySelect($querySelect);
 	
 	if(isset($userData['email'])){
@@ -32,7 +32,7 @@ function isUserCorrect($email,$password){
 	}else{
 		header('Location: ?action=login&incorrect=true');
 	}
-} //Edited
+} //Ended
 
 /**
  * @brief This function is designed to register the user to a json file.
@@ -43,16 +43,17 @@ function isUserCorrect($email,$password){
 function userRegister($username, $email, $password){
     //$json = 'model/content/users.json';
     //$jsonData = decodeJson($json);
+    $strseparator = '\'';
 
-    $querySelect = "SELECT"; //Check if user already exist (Email & Username)
+    $querySelect = "SELECT username, email, password FROM users WHERE username = ".$strseparator.$username.$strseparator." OR email = ".$strseparator.$email.$strseparator;
     $queryResult = executeQuerySelect($querySelect);
 
     if(isset($queryResult['email'])){
         header('Location: ?action=register&incorrect=true&userExists=true');
     }else{
-        $queryInsert = "INSERT INTO";
+        $queryInsert = "INSERT INTO users(username, email, password) VALUES(".$strseparator.$username.$strseparator.", ".$strseparator.$email.$strseparator.", ".$strseparator.password_hash($password).$strseparator;
         executeQueryInsert($queryInsert);
 
         header('Location: ?action=login&userCreated=true');
     }
-} //Edited
+} //Ended

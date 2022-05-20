@@ -7,8 +7,9 @@
  */
 
 /**
- * @param $query
- * @return array|false
+ * @brief : This function is designed to send select query to the db
+ * @param $query : This function is the query used in the db
+ * @return array|false : This array is the return of the query datas
  */
 function executeQuerySelect($query)
 {
@@ -27,7 +28,8 @@ function executeQuerySelect($query)
 }
 
 /**
- * @return PDO|null
+ * @brief : This function is designed to connect php to the db
+ * @return PDO|null : This return is for enable connection for PHP
  */
 function openDBconnection()
 {
@@ -51,6 +53,10 @@ function openDBconnection()
     return $tempDBConnection;
 }
 
+/**
+ * @brief : This function is designed to execute query for insert datas in db
+ * @param $registerQuery : This var is for the query to execute in the db
+ */
 function executeQueryInsert($registerQuery)
 {
 
@@ -65,13 +71,17 @@ function executeQueryInsert($registerQuery)
 
 }
 
-function executeQueryDelete($registerQuery)
+/**
+ * @brief : This function is designed to delete datas in the db
+ * @param $deleteQuery : This var is for delete the datas in the db
+ */
+function executeQueryDelete($deleteQuery)
 {
 
     $dbConnection = openDBConnection();
     if ($dbConnection != NULL)
     {
-        $statement = $dbConnection->prepare($registerQuery); // Query prepare
+        $statement = $dbConnection->prepare($deleteQuery); // Query prepare
         $statement->execute(); // Execute query
         $queryResult = $statement->fetchAll(); // prepare results for client
     }
@@ -79,6 +89,10 @@ function executeQueryDelete($registerQuery)
 
 }
 
+/**
+ * @brief : This fucntion is designed to update datas in the db
+ * @param $updateQuery : This var contains the query to execute in db
+ */
 function executeQueryUpdate($updateQuery){
 
     $dbConnection = openDBConnection();
