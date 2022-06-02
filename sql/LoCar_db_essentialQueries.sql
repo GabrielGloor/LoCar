@@ -14,6 +14,9 @@ INSERT INTO users(username,email,password) VALUES ("diogof648","diogof648@gmail.
 /* Update the user infos */
 UPDATE users SET username = "diogof647", email = "diogof647@gmail.com", password = "Password" WHERE username = "diogof648";
 
+/* Select all offers */
+SELECT id, title, price, town, image FROM offers;
+
 /* Select the offer infos */
 SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users
 INNER JOIN offers ON users.id = offers.user_id
