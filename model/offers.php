@@ -7,15 +7,18 @@
  */
 
 require_once "model/json.php";
-require "model/dbConnector.php";
+require_once "model/dbConnector.php";
 
 /**
  * @brief This function is designed to take offers infos in the json data file
  * @return mixed This function return the datas of the offers
  */
-function getOffersInfos($filters = ""){
-    $jsonFile = "model/content/offers.json";
-    $offersInfos = decodeJson($jsonFile);
+function getOffersInfos($filters = "", $id = null){
+    //$jsonFile = "model/content/offers.json";
+    //$offersInfos = decodeJson($jsonFile);
+    $querySelect = $id == null ? "SELECT offerNumber, title, description, price, town, brand, year, image, user_id FROM offers" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id =".offers.user_id."WHERE offers.id =".$id;
+    $offersInfos = executeQuerySelect($querySelect);
+
     $indexes = array();
 
     if($filters != ""){
@@ -45,7 +48,7 @@ function getOffersInfos($filters = ""){
     }
 
     return $offersInfos;
-}
+} //toDO
 
 /**
  * @brief This function is designed to create an offer on insert it in json file
@@ -54,14 +57,14 @@ function getOffersInfos($filters = ""){
  */
 function createOffers($offerData, $file){
     $target_dir = "model/content/offers_img/";
-    $jsonFile = "model/content/offers.json";
-    $allOffersDatas = getOffersInfos();
+    $strseparator = '\'';
 
-    foreach ($allOffersDatas as $offerDatas){
-        if ($offerDatas['name'] == $offerData['title']){
+    $querySelect = "SELECT offerNumber, title, description, price, town, brand, year, image, user_id FROM offers WHERE title = ".$strseparator.$offerData['title'].$strseparator;
+    $allOffersDatas = executeQuerySelect($querySelect);
+
+      if (isset($allOffersDatas['title'])){
             header('Location: ?action=offerCreate&exists=true');
         }
-    }
 
     $id = $allOffersDatas[count($allOffersDatas)-1]['id']+1;
     $file['img']['name'] = $id.substr($file['img']['name'],strpos($file['img']['name'],'.'),null);
@@ -72,28 +75,19 @@ function createOffers($offerData, $file){
     $description = $offerData['desc'];
     $town = $offerData['town'];
     $year = intval($offerData['year']);
+
     $ownerEmail = $_SESSION['email'];
+    $querySelectUser = "SELECT id FROM users WHERE email = ".$strseparator.$ownerEmail.$strseparator;
+    $userID = executeQuerySelect($querySelectUser);
 
-    $arrayData = array(
-        "id" => $id,
-        "name" => $name,
-        "price" => $price,
-        "description" => $description,
-        "town" => $town,
-        "image" => $image,
-        "brand" => $brand,
-        "ownerEmail" => $ownerEmail,
-        "year" => $year
-    );
-
-    move_uploaded_file($file["img"]["tmp_name"], $image);
-
-    $allOffersDatas[count($allOffersDatas)] = $arrayData;
-
-    encodeJson($allOffersDatas, $jsonFile);
+    $creationQueryP1 = "INSERT INTO offers(title, description, price, town, brand, year, image, user_id) VALUES (".$strseparator.$name.$strseparator.", ".$strseparator.$description.$strseparator;
+    $creationQueryP2 = ", ".$strseparator.$price.$strseparator.", ".$strseparator.$town.$strseparator.", ".$strseparator.$brand.$strseparator.", ".$strseparator.$year.$strseparator;
+    $creationQueryP3 = ", ".$strseparator.$image.$strseparator.", ".$userID[id];
+    $creationQuery = $creationQueryP1.$creationQueryP2.$creationQueryP3;
+    executeQueryInsert($creationQuery);
 
     header('Location: ?action=offers&offerCreated=true');
-}
+} //toCheck
 
 /**
  * @brief This function is designed to modify an offer
@@ -101,9 +95,6 @@ function createOffers($offerData, $file){
  * @param $offerId : This param is the offer id. It will be used to fill the form with the data already existing for example
  */
 function modifyOffers($offerData, $offerId){
-    //$jsonFile = "model/content/offers.json";
-    //$allOffersDatas = getOffersInfos();
-    //$offerModified = null;
     $strSeparator = '\'';
 
     $title = $offerData['title'];
@@ -120,34 +111,17 @@ function modifyOffers($offerData, $offerId){
     $queryUpdate = $queryUpdateP1.$queryUpdateP2.$queryUpdateP3;
     executeQueryUpdate($queryUpdate);
 
-    /*foreach ($allOffersDatas as $index => $offerDatas){
-        if ($offerDatas['id'] == $offerId){
-            $allOffersDatas[$index]['name'] = $offerData['title'];
-            $allOffersDatas[$index]['price'] = number_format(floatval($offerData['price']),2);
-            $allOffersDatas[$index]['brand'] = $offerData['brand'];
-            $allOffersDatas[$index]['description'] = $offerData['desc'];
-            $allOffersDatas[$index]['town'] = $offerData['town'];
-            $allOffersDatas[$index]['year'] = intval($offerData['year']);
-            break;
-        }
-    }*/
-
-    //encodeJson($allOffersDatas, $jsonFile);
-
     header('Location: ?action=offers&offerModified=true');
-} //Ended
+} //toCheck
 
 /**
  * @brief This function is designed to delete offers from his code
  * @param $offerId : Is the idd of the offer to delete
  */
 function deleteOffers($offerId){
-    //$datas = getOffersInfos();
-    //$index = NULL;
-    //$file = "model/content/offers.json";
     $strseparator = '\'';
 
-    $queryDelete = "DELETE FROM offers WHERE offerNumber = ".$strseparator.$offerId.$strseparator; // Delete where offerid = $offerId
+    $queryDelete = "DELETE FROM offers WHERE offerNumber = ".$strseparator.$offerId.$strseparator;
     executeQueryDelete($queryDelete);
 
-} //Ended
+} //toCheck

@@ -6,7 +6,7 @@
  * @Description : This file is designed to verify for the login and the register if the user input are filled or not.
  */
 
-require "model/usersManager.php";
+require "model/users.php";
 
 /**
  * @brief   This function is designed to verify if the requirements datas are filled

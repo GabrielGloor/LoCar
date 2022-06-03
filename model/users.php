@@ -7,7 +7,7 @@
  */
 
 require 'json.php';
-require "model/dbConnector.php";
+require_once "model/dbConnector.php";
 
 /**
  * @brief   This function is designed to verify if the login form of the user is correct
@@ -15,8 +15,6 @@ require "model/dbConnector.php";
  * @param $password     User Password
  */
 function isUserCorrect($email,$password){
-	//$json = 'model/content/users.json';
-	//$jsonData = decodeJson($json);
 
     $querySelect = "SELECT username, email, password FROM users";
     $userData = executeQuerySelect($querySelect);
@@ -32,7 +30,7 @@ function isUserCorrect($email,$password){
 	}else{
 		header('Location: ?action=login&incorrect=true');
 	}
-} //Ended
+} //toCheck
 
 /**
  * @brief This function is designed to register the user to a json file.
@@ -41,8 +39,7 @@ function isUserCorrect($email,$password){
  * @param $password : User password
  */
 function userRegister($username, $email, $password){
-    //$json = 'model/content/users.json';
-    //$jsonData = decodeJson($json);
+
     $strseparator = '\'';
 
     $querySelect = "SELECT username, email, password FROM users WHERE username = ".$strseparator.$username.$strseparator." OR email = ".$strseparator.$email.$strseparator;
@@ -56,4 +53,4 @@ function userRegister($username, $email, $password){
 
         header('Location: ?action=login&userCreated=true');
     }
-} //Ended
+} //toCheck

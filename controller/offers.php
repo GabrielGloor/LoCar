@@ -6,7 +6,7 @@
  * @Description : This file is designed to manage the offers
  */
 
-require_once "model/offersManagement.php";
+require "model/offers.php";
 
 /**
  * @brief This function is designed to show to the user the offer page with all the offers
@@ -68,7 +68,7 @@ function showOffersInHomePage(){
  * @param $id : ID of the offer get by $_GET
  */
 function offerDetails($id){
-    $offersDatas = getOffersInfos();
+    $offersDatas = getOffersInfos($id);
 
     foreach ($offersDatas as $offerData){
         if ($offerData['id'] == $id) {

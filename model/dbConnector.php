@@ -38,9 +38,9 @@ function openDBconnection()
     $hostname = 'localhost';
     $port = 3306;
     $charset = 'utf8';
-    $dbName = 'snows';
-    $username = 'root';
-    $userPsw = 'Roro1923';
+    $dbName = 'locar';
+    $username = 'dbmaster';
+    $userPsw = 'Pa$$w0rd';
     $dsn = $sqlDriver.':host='.$hostname.';dbname='.$dbName.';port='.$port.';charset='.$charset;
 
     try {
