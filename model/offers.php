@@ -27,21 +27,20 @@ function getOffersInfos($filters = ""){
                 }
             }
 
+            //TODO NGY What about cleaning the $indexes instead of making a look of each items ?
             foreach($indexes as $index){
                 unset($offersInfos[$index]);
             }
         }
 
         if($filters['prices'] != ''){
+            $prices = array_column($offersInfos, 'price');
             if($filters['prices'] == 'asc'){
-                $prices = array_column($offersInfos, 'price');
                 array_multisort($prices, SORT_ASC, $offersInfos);
             }elseif($filters['prices'] == 'desc'){
-                $prices = array_column($offersInfos, 'price');
                 array_multisort($prices, SORT_DESC, $offersInfos);
             }
         }
-        
     }
 
     return $offersInfos;

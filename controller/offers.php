@@ -11,6 +11,9 @@ require_once "model/offersManagement.php";
 /**
  * @brief This function is designed to show to the user the offer page with all the offers
  */
+
+define("YEAR_ERROR_MESSAGE" , "L'année rentrée est erronée ! (supérieur 1920 | inférieur Année actuelle)");
+
 function offers($filters = null){
     $offers = getOffersInfos($filters);
     $classNb = 0;
@@ -39,7 +42,7 @@ function offers($filters = null){
 }
 
 /**
- * @brief This function is designed the last 4 offers only in the home page
+ * @brief This function is designed show the last 4 offers on the home page
  */
 function showOffersInHomePage(){
     $offersData = getOffersInfos();
@@ -65,13 +68,13 @@ function showOffersInHomePage(){
 
 /**
  * @brief This function is designed to show to the user a page with all the infos of an offer
- * @param $id : ID of the offer get by $_GET
+ * @param $offferId : ID of the offer get by $_GET
  */
-function offerDetails($id){
+function offerDetails($offerId){
     $offersDatas = getOffersInfos();
 
     foreach ($offersDatas as $offerData){
-        if ($offerData['id'] == $id) {
+        if ($offerData['id'] == $offerId) {
             $linkToImg = $offerData['image'];
             $name = $offerData['name'];
             $price = $offerData['price'];
@@ -92,13 +95,8 @@ function createOffer($infos, $file){
 
     if (isset($infos['title'])){
         if ((int) $infos['year'] > (int) date("Y") || (int) $infos['year'] < 1920){
-            $titleO = $infos['title'];
-            $town = $infos['town'];
-            $brand = $infos['brand'];
-            $desc = $infos['desc'];
-            $year = $infos['year'];
-            $price = $infos['price'];
-            $yearErr = "L'année rentrée est erronée ! (supérieur 1920 | inférieur Année actuelle)";
+            setInfos($infos);
+            $yearErr = YEAR_ERROR_MESSAGE;
 
             require "view/createOffer.php";
         }else{
@@ -127,13 +125,8 @@ function modifyOffer($infos, $offerId){
 
     if (isset($infos['title'])){
         if ((int) $infos['year'] > (int) date("Y") || (int) $infos['year'] < 1920){
-            $name = $infos['title'];
-            $town = $infos['town'];
-            $brand = $infos['brand'];
-            $desc = $infos['desc'];
-            $year = $infos['year'];
-            $price = $infos['price'];
-            $yearErr = "L'année rentrée est erronée ! (supérieur 1920 | inférieur Année actuelle)";
+            setInfo($infos);
+            $yearErr = YEAR_ERROR_MESSAGE;
 
             require "view/modifyOffer.php";
         }else {
@@ -142,12 +135,7 @@ function modifyOffer($infos, $offerId){
     }else{
         foreach($offers as $offer){
             if($offer['id'] == $offerId){
-                $name = $offer['name'];
-                $town = $offer['town'];
-                $brand = $offer['brand'];
-                $desc = $offer['description'];
-                $year = $offer['year'];
-                $price = $offer['price'];
+
             }
         }
 
@@ -161,4 +149,13 @@ function modifyOffer($infos, $offerId){
 function deleteOffer($offerId){
     deleteOffers($offerId);
     header("Location: ?action=user&username=".$_SESSION['username']."&deleted=true");
+}
+
+function setInfo($infos){
+    $name = $infos['title'];
+    $town = $infos['town'];
+    $brand = $infos['brand'];
+    $desc = $infos['desc'];
+    $year = $infos['year'];
+    $price = $infos['price'];
 }
