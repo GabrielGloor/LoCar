@@ -6,7 +6,7 @@
  * @Description : This file is designed to manage the offers
  */
 
-require_once "model/offersManagement.php";
+require_once "model/offers.php";
 
 /**
  * @brief This function is designed to show to the user the offer page with all the offers

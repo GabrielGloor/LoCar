@@ -35,12 +35,12 @@ function openDBconnection()
 {
     $tempDBConnection = NULL;
     $sqlDriver = 'mysql';
-    $hostname = 'localhost';
+    $hostname = '127.0.0.1';
     $port = 3306;
     $charset = 'utf8';
-    $dbName = 'snows';
-    $username = 'root';
-    $userPsw = 'Roro1923';
+    $dbName = 'locar';
+    $username = 'db_master';
+    $userPsw = 'Pa$$w0rd';
     $dsn = $sqlDriver.':host='.$hostname.';dbname='.$dbName.';port='.$port.';charset='.$charset;
 
     try {
@@ -52,6 +52,7 @@ function openDBconnection()
     }
     return $tempDBConnection;
 }
+
 
 /**
  * @brief : This function is designed to execute query for insert datas in db
@@ -68,6 +69,7 @@ function executeQueryInsert($registerQuery)
         //$queryResult = $statement->fetchAll(); // prepare results for client
     }
     $dbConnection = NULL; // close connection to the dataBase for the security
+    return 0;
 
 }
 

@@ -8,9 +8,8 @@
 
 require "controller/users.php";
 require "controller/nav.php";
-require "controller/offersController.php";
+require "controller/offers.php";
 require "controller/emails.php";
-
 
 session_start();
 
@@ -48,7 +47,7 @@ if (isset($_GET['action'])) {
             if (isset($_GET['offerId'])) deleteOffer($_GET['offerId']); else header("Location: ?action=home");
             break;
         case 'email':
-            mail_c($_POST,$_GET['offerId']);
+            mailCheck($_POST,$_GET['offerId']);
             break;
         default :
             lost();

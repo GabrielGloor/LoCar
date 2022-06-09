@@ -7,7 +7,7 @@
  */
 
 require 'json.php';
-require "model/dbConnector.php";
+require_once "model/dbConnector.php";
 
 /**
  * @brief   This function is designed to verify if the login form of the user is correct
@@ -51,7 +51,7 @@ function userRegister($username, $email, $password){
     if(isset($queryResult['email'])){
         header('Location: ?action=register&incorrect=true&userExists=true');
     }else{
-        $queryInsert = "INSERT INTO users(username, email, password) VALUES(".$strseparator.$username.$strseparator.", ".$strseparator.$email.$strseparator.", ".$strseparator.password_hash($password).$strseparator;
+        $queryInsert = "INSERT INTO users(username, email, password) VALUES(".$strseparator.$username.$strseparator.", ".$strseparator.$email.$strseparator.", ".$strseparator.password_hash($password, PASSWORD_DEFAULT).$strseparator;
         executeQueryInsert($queryInsert);
 
         header('Location: ?action=login&userCreated=true');
