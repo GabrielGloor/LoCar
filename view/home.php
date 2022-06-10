@@ -47,6 +47,10 @@ $title = 'LoCar - Accueil';
         <div class="layout_padding">
             <div class="row">
                 <?php
+<<<<<<< HEAD
+=======
+                require_once "controller/offers.php";
+>>>>>>> 0519bafd946c811ae0b2e82afb229ecefb94ff0b
                 showOffersInHomePage();
                 ?>
             </div>
@@ -144,5 +148,5 @@ $title = 'LoCar - Accueil';
 <!-- end contact section -->
 <?php
 $content = ob_get_clean();
-require 'gabarit.php'
+require 'view/gabarit.php'
 ?>

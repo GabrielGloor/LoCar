@@ -16,7 +16,11 @@ require_once "model/dbConnector.php";
 function getOffersInfos($filters = "", $id = null){
     //$jsonFile = "model/content/offers.json";
     //$offersInfos = decodeJson($jsonFile);
+<<<<<<< HEAD
     $querySelect = $id == null ? "SELECT id, title, description, price, town, brand, year, image, user_id FROM offers" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id = offers.user_id WHERE offers.id =".$id;
+=======
+    $querySelect = $id == null ? "SELECT offerNumber, title, description, price, town, brand, year, image, user_id FROM offers" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id =".offers.user_id."WHERE offers.id =".$id;
+>>>>>>> 0519bafd946c811ae0b2e82afb229ecefb94ff0b
     $offersInfos = executeQuerySelect($querySelect);
 
     $indexes = array();

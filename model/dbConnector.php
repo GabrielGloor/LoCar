@@ -35,7 +35,7 @@ function openDBconnection()
 {
     $tempDBConnection = NULL;
     $sqlDriver = 'mysql';
-    $hostname = 'localhost';
+    $hostname = '127.0.0.1';
     $port = 3306;
     $charset = 'utf8';
     $dbName = 'locar';
@@ -53,6 +53,7 @@ function openDBconnection()
     return $tempDBConnection;
 }
 
+
 /**
  * @brief : This function is designed to execute query for insert datas in db
  * @param $registerQuery : This var is for the query to execute in the db
@@ -68,6 +69,7 @@ function executeQueryInsert($registerQuery)
         //$queryResult = $statement->fetchAll(); // prepare results for client
     }
     $dbConnection = NULL; // close connection to the dataBase for the security
+    return 0;
 
 }
 

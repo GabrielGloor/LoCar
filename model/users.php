@@ -48,7 +48,11 @@ function userRegister($username, $email, $password){
     if(isset($queryResult['email'])){
         header('Location: ?action=register&incorrect=true&userExists=true');
     }else{
+<<<<<<< HEAD
         $queryInsert = "INSERT INTO users (username, email, password) VALUES (".$strseparator.$username.$strseparator.", ".$strseparator.$email.$strseparator.", ".$strseparator.password_hash($password, PASSWORD_DEFAULT).$strseparator.")";
+=======
+        $queryInsert = "INSERT INTO users(username, email, password) VALUES(".$strseparator.$username.$strseparator.", ".$strseparator.$email.$strseparator.", ".$strseparator.password_hash($password, PASSWORD_DEFAULT).$strseparator;
+>>>>>>> 0519bafd946c811ae0b2e82afb229ecefb94ff0b
         executeQueryInsert($queryInsert);
 
         header('Location: ?action=login&userCreated=true');
