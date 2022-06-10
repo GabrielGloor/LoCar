@@ -17,7 +17,7 @@ CREATE TABLE users(
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(15) NOT NULL,
     email VARCHAR(320) NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     CONSTRAINT PK_User PRIMARY KEY (id),
     CONSTRAINT UniqueUser UNIQUE (username,email)
 );
@@ -37,14 +37,13 @@ CREATE TABLE offers(
     CONSTRAINT FK_Users_Offers FOREIGN KEY (user_id) REFERENCES users(id),
     CONSTRAINT UniqueOffer UNIQUE (title,user_id)
 );
-SHOW WARNINGS;
 
 /* Update offers table to set AUTO_INCREMENT start to 192168 */
 ALTER TABLE offers AUTO_INCREMENT = 192168;
 
 /* Delete the user if he already exists */
-DROP USER IF EXISTS 'db_master'@'127.0.0.1';
+DROP USER IF EXISTS 'db_master'@'localhost';
 
 /* Create the user */
-CREATE USER 'db_master'@'127.0.0.1' IDENTIFIED BY 'Pa$$w0rd';
-GRANT SELECT, INSERT, UPDATE ON locar . * TO 'db_master'@'127.0.0.1';
+CREATE USER 'db_master'@'localhost' IDENTIFIED BY 'Pa$$w0rd';
+GRANT SELECT, INSERT, UPDATE ON locar . * TO 'db_master'@'localhost';
