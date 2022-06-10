@@ -7,14 +7,13 @@
  */
 
 /**
- * @brief   This function is designed to decode the json datas for use it in the functions
+ * @brief   This function is designed to decode the json data for use it in the functions
  * @param $file     Access to the json file
- * @return mixed    Return assiocative array with the datas
+ * @return mixed    Return associative array with the data
  */
 function decodeJson($file){
 	$json = file_get_contents($file);
-	$data = json_decode($json,true);
-	return $data;
+	return json_decode($json,true);
 }
 
 /**
@@ -24,5 +23,6 @@ function decodeJson($file){
  */
 function encodeJson($array, $file){
 	$data = json_encode($array);
-	$json = file_put_contents($file,$data);
+    //TODO NGY - you never use $json variable
+	return file_put_contents($file,$data);
 }

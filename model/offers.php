@@ -16,7 +16,7 @@ require_once "model/dbConnector.php";
 function getOffersInfos($filters = "", $id = null){
     //$jsonFile = "model/content/offers.json";
     //$offersInfos = decodeJson($jsonFile);
-    $querySelect = $id == null ? "SELECT offerNumber, title, description, price, town, brand, year, image, user_id FROM offers" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id =".offers.user_id."WHERE offers.id =".$id;
+    $querySelect = $id == null ? "SELECT id, title, description, price, town, brand, year, image, user_id FROM offers" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id = offers.user_id WHERE offers.id =".$id;
     $offersInfos = executeQuerySelect($querySelect);
 
     $indexes = array();
@@ -30,21 +30,20 @@ function getOffersInfos($filters = "", $id = null){
                 }
             }
 
+            //TODO NGY What about cleaning the $indexes instead of making a look of each items ?
             foreach($indexes as $index){
                 unset($offersInfos[$index]);
             }
         }
 
         if($filters['prices'] != ''){
+            $prices = array_column($offersInfos, 'price');
             if($filters['prices'] == 'asc'){
-                $prices = array_column($offersInfos, 'price');
                 array_multisort($prices, SORT_ASC, $offersInfos);
             }elseif($filters['prices'] == 'desc'){
-                $prices = array_column($offersInfos, 'price');
                 array_multisort($prices, SORT_DESC, $offersInfos);
             }
         }
-        
     }
 
     return $offersInfos;

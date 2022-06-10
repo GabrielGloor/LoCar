@@ -30,11 +30,11 @@
     <!-- fonts style -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="view/contents/css/style.css" rel="stylesheet" />
+    <link href="view/contents/css/style.css" type="text/css" rel="stylesheet" />
     <!-- responsive style -->
-    <link href="view/contents/css/responsive.css" rel="stylesheet" />
+    <link href="view/contents/css/responsive.css" type="text/css" rel="stylesheet" />
 
-    <script src="https://kit.fontawesome.com/d8302aa554.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d8302aa554.js" type="text/css" crossorigin="anonymous"></script>
 </head>
 
 <body onload="auto_grow(document.getElementById('desc'))">

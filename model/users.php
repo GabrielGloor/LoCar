@@ -19,9 +19,9 @@ function isUserCorrect($email,$password){
     $querySelect = "SELECT username, email, password FROM users";
     $userData = executeQuerySelect($querySelect);
 	
-	if(isset($userData['email'])){
-		if(password_verify($userData['password'], password_hash($password))){
-			$_SESSION['username'] = $userData['email']['username'];
+	if(isset($userData[0]['email'])){
+		if(password_verify($password, $userData[0]['password'])){
+			$_SESSION['username'] = $userData[0]['username'];
             $_SESSION['email'] = $email;
 			header('Location: ?action=home');
 		}else{
@@ -48,7 +48,7 @@ function userRegister($username, $email, $password){
     if(isset($queryResult['email'])){
         header('Location: ?action=register&incorrect=true&userExists=true');
     }else{
-        $queryInsert = "INSERT INTO users(username, email, password) VALUES(".$strseparator.$username.$strseparator.", ".$strseparator.$email.$strseparator.", ".$strseparator.password_hash($password).$strseparator;
+        $queryInsert = "INSERT INTO users (username, email, password) VALUES (".$strseparator.$username.$strseparator.", ".$strseparator.$email.$strseparator.", ".$strseparator.password_hash($password, PASSWORD_DEFAULT).$strseparator.")";
         executeQueryInsert($queryInsert);
 
         header('Location: ?action=login&userCreated=true');

@@ -8,11 +8,11 @@
  * @last_update  Diogo.DA-SILVA-FERNA - DATE
  */
 
-function mail_c($infos,$offer){
+function mailCheck($infos,$offer){
     if (isset($infos['ownerEmail']) || isset($infos['name'])){
         require_once "model/emails.php";
 
-        if(mail_m($infos,$offer)){
+        if(mailSEnder($infos,$offer)){
             if ($offer != false) header('Location: ?action=offerDetails&offerId='.$offer.'&confirm=true#contact');
             else header('Location: ?action=home&confirm=true#nous-contacter');
         }

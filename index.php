@@ -21,7 +21,8 @@ if (isset($_GET['action'])) {
             home();
             break;
         case 'login' :
-            login($_POST);
+            if (isset($_POST['inputEmail']) && isset($_POST['inputPswd'])) login($_POST['inputEmail'], $_POST['inputPswd']);
+            else login();
             break;
         case 'logout' :
             logout();

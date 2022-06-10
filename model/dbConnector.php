@@ -39,7 +39,7 @@ function openDBconnection()
     $port = 3306;
     $charset = 'utf8';
     $dbName = 'locar';
-    $username = 'dbmaster';
+    $username = 'db_master';
     $userPsw = 'Pa$$w0rd';
     $dsn = $sqlDriver.':host='.$hostname.';dbname='.$dbName.';port='.$port.';charset='.$charset;
 
