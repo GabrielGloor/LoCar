@@ -16,11 +16,10 @@ require_once "model/dbConnector.php";
 function getOffersInfos($filters = "", $id = null){
     //$jsonFile = "model/content/offers.json";
     //$offersInfos = decodeJson($jsonFile);
-<<<<<<< HEAD
     $querySelect = $id == null ? "SELECT id, title, description, price, town, brand, year, image, user_id FROM offers" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id = offers.user_id WHERE offers.id =".$id;
-=======
-    $querySelect = $id == null ? "SELECT offerNumber, title, description, price, town, brand, year, image, user_id FROM offers" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id =".offers.user_id."WHERE offers.id =".$id;
->>>>>>> 0519bafd946c811ae0b2e82afb229ecefb94ff0b
+
+    //$querySelect = $id == null ? "SELECT offerNumber, title, description, price, town, brand, year, image, user_id FROM offers" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id =".offers.user_id."WHERE offers.id =".$id;
+
     $offersInfos = executeQuerySelect($querySelect);
 
     $indexes = array();
@@ -59,17 +58,17 @@ function getOffersInfos($filters = "", $id = null){
  * @param $file : This param contain the informations about the offer image
  */
 function createOffers($offerData, $file){
-    $target_dir = "model/content/offers_img/";
+    $target_dir = "/view/model/content/offers_img/";
     $strseparator = '\'';
 
-    $querySelect = "SELECT offerNumber, title, description, price, town, brand, year, image, user_id FROM offers WHERE title = ".$strseparator.$offerData['title'].$strseparator;
+    $querySelect = "SELECT id, title, description, price, town, brand, year, image, user_id FROM offers";
     $allOffersDatas = executeQuerySelect($querySelect);
 
-      if (isset($allOffersDatas['title'])){
-            header('Location: ?action=offerCreate&exists=true');
+      foreach($allOffersDatas as $offerDatasCheck){
+          if ($offerDatasCheck['title'] == $offerData['title']) header('Location: ?action=offerCreate&exists=true');
         }
 
-    $id = $allOffersDatas[count($allOffersDatas)-1]['id']+1;
+    $id = count($allOffersDatas)+1;
     $file['img']['name'] = $id.substr($file['img']['name'],strpos($file['img']['name'],'.'),null);
     $image = $target_dir . basename($file["img"]["name"]);
     $name = $offerData['title'];
@@ -81,11 +80,12 @@ function createOffers($offerData, $file){
 
     $ownerEmail = $_SESSION['email'];
     $querySelectUser = "SELECT id FROM users WHERE email = ".$strseparator.$ownerEmail.$strseparator;
-    $userID = executeQuerySelect($querySelectUser);
+    $getUserID = executeQuerySelect($querySelectUser);
+    $userID = $getUserID[0]['id'];
 
-    $creationQueryP1 = "INSERT INTO offers(title, description, price, town, brand, year, image, user_id) VALUES (".$strseparator.$name.$strseparator.", ".$strseparator.$description.$strseparator;
+    $creationQueryP1 = "INSERT INTO offers (title, description, price, town, brand, year, image, user_id) VALUES (".$strseparator.$name.$strseparator.", ".$strseparator.$description.$strseparator;
     $creationQueryP2 = ", ".$strseparator.$price.$strseparator.", ".$strseparator.$town.$strseparator.", ".$strseparator.$brand.$strseparator.", ".$strseparator.$year.$strseparator;
-    $creationQueryP3 = ", ".$strseparator.$image.$strseparator.", ".$userID[id];
+    $creationQueryP3 = ", ".$strseparator.$image.$strseparator.", ".$userID.")";
     $creationQuery = $creationQueryP1.$creationQueryP2.$creationQueryP3;
     executeQueryInsert($creationQuery);
 
@@ -110,7 +110,7 @@ function modifyOffers($offerData, $offerId){
 
     $queryUpdateP1 = "UPDATE offers SET title = ".$strSeparator.$title.$strSeparator.", description = ".$strSeparator.$description.$strSeparator.", price = ".$strSeparator.$price.$strSeparator;
     $queryUpdateP2 = ", town = ".$strSeparator.$town.$strSeparator.", brand = ".$strSeparator.$brand.$strSeparator.", year = ".$strSeparator.$year.$strSeparator;
-    $queryUpdateP3 = ", user_id = ".$strSeparator.$userId.$strSeparator." WHERE offerId = ".$offerId;
+    $queryUpdateP3 = ", user_id = ".$strSeparator.$userId[0]['id'].$strSeparator." WHERE id = ".$offerId;
     $queryUpdate = $queryUpdateP1.$queryUpdateP2.$queryUpdateP3;
     executeQueryUpdate($queryUpdate);
 

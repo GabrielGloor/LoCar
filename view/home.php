@@ -47,10 +47,7 @@ $title = 'LoCar - Accueil';
         <div class="layout_padding">
             <div class="row">
                 <?php
-<<<<<<< HEAD
-=======
                 require_once "controller/offers.php";
->>>>>>> 0519bafd946c811ae0b2e82afb229ecefb94ff0b
                 showOffersInHomePage();
                 ?>
             </div>

@@ -6,11 +6,8 @@
  * @Description : This file is designed to manage the offers
  */
 
-<<<<<<< HEAD
+
 require "model/offers.php";
-=======
-require_once "model/offers.php";
->>>>>>> 0519bafd946c811ae0b2e82afb229ecefb94ff0b
 
 /**
  * @brief This function is designed to show to the user the offer page with all the offers
@@ -27,7 +24,7 @@ function offers($filters = null){
     if(!empty($offers)){
         foreach ($offers as $offer){
             $class = $classNb%2 ? ($classNb+1)." pair" : ($classNb+1)." impair";
-            $name = $offer['name'];
+            $name = $offer['title'];
             $linkToImg = $offer['image'];
             $price = $offer['price'];
             $offerId = $offer['id'];
@@ -143,8 +140,6 @@ function modifyOffer($infos, $offerId){
         if ((int) $infos['year'] > (int) date("Y") || (int) $infos['year'] < 1920){
             setInfo($infos);
             $yearErr = YEAR_ERROR_MESSAGE;
-
-            require "view/modifyOffer.php";
         }else {
             modifyOffers($infos, $offerId);
         }
@@ -168,6 +163,7 @@ function deleteOffer($offerId){
 }
 
 function setInfo($infos){
+    $offerId = $infos['id'];
     $name = $infos['title'];
     $town = $infos['town'];
     $brand = $infos['brand'];
