@@ -14,7 +14,7 @@ require 'view/contents/top_bar.php';
 ?>
 <div class="boxOffer">
     <div class="imgBox">
-        <img class="img-fluid" src="<?=$linkToImg?>">
+        <img class="img-fluid" src="model/content/offers_img/<?=$linkToImg?>">
     </div>
 
     <div class="titlePriceTown">

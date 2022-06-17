@@ -16,7 +16,8 @@ require_once "model/dbConnector.php";
  */
 function isUserCorrect($email,$password){
 
-    $querySelect = "SELECT username, email, password FROM users";
+    $strSeparator = '\'';
+    $querySelect = "SELECT username, email, password FROM users WHERE email =".$strSeparator.$email.$strSeparator;
     $userData = executeQuerySelect($querySelect);
 	
 	if(isset($userData[0]['email'])){

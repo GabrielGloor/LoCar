@@ -25,7 +25,7 @@ function offers($filters = null){
         foreach ($offers as $offer){
             $class = $classNb%2 ? ($classNb+1)." pair" : ($classNb+1)." impair";
             $name = $offer['title'];
-            $linkToImg = $offer['image'];
+            $linkToImg = $offer['imageName'];
             $price = $offer['price'];
             $offerId = $offer['id'];
             $linkToDetails = "?action=offerDetails&offerId=".$offerId;
@@ -56,7 +56,7 @@ function showOffersInHomePage(){
         for ($showCurrentOffers = $nbOffers; $showCurrentOffers >= $nbOffers-3; $showCurrentOffers--) {
             $class = ($showCurrentOffers-($nbOffers-4))%2 ? ($showCurrentOffers-($nbOffers-4))." pair" : ($showCurrentOffers-($nbOffers-4))." impair";
             $name = $offersData[$showCurrentOffers]['title'];
-            $linkToImg = $offersData[$showCurrentOffers]['image'];
+            $linkToImg = $offersData[$showCurrentOffers]['imageName'];
             $linkToDetails = "?action=offerDetails&offerId=".$offersData[$showCurrentOffers]['id'];
             $price = $offersData[$showCurrentOffers]['price'];
             $btnName = 'Détails';

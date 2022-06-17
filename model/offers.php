@@ -16,26 +16,19 @@ require_once "model/dbConnector.php";
 function getOffersInfos($filters = "", $id = null){
     //$jsonFile = "model/content/offers.json";
     //$offersInfos = decodeJson($jsonFile);
-    $querySelect = $id == null ? "SELECT id, title, description, price, town, brand, year, image, user_id FROM offers" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id = offers.user_id WHERE offers.id =".$id;
+    $querySelect = $id == null ? "SELECT id, title, description, price, town, brand, year, imageName, user_id FROM offers WHERE active = 1" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id = offers.user_id WHERE offers.id =".$id." AND active = 1";
 
     //$querySelect = $id == null ? "SELECT offerNumber, title, description, price, town, brand, year, image, user_id FROM offers" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id =".offers.user_id."WHERE offers.id =".$id;
 
     $offersInfos = executeQuerySelect($querySelect);
 
-    $indexes = array();
-
     if($filters != ""){
 
         if($filters['search'] != ''){
             foreach($offersInfos as $index=>$offer){
-                if(strpos($offer['town'],$filters['search']) == false){
-                    array_push($indexes,$index);
+                if(!strpos(" ".$offer['town']." ",$filters['search'])){
+                    unset($offersInfos[$index]);
                 }
-            }
-
-            //TODO NGY What about cleaning the $indexes instead of making a look of each items ?
-            foreach($indexes as $index){
-                unset($offersInfos[$index]);
             }
         }
 
@@ -58,10 +51,10 @@ function getOffersInfos($filters = "", $id = null){
  * @param $file : This param contain the informations about the offer image
  */
 function createOffers($offerData, $file){
-    $target_dir = "/view/model/content/offers_img/";
+    $target_dir = "model/content/offers_img/";
     $strseparator = '\'';
 
-    $querySelect = "SELECT id, title, description, price, town, brand, year, image, user_id FROM offers";
+    $querySelect = "SELECT id, title, description, price, town, brand, year, imageName, user_id FROM offers";
     $allOffersDatas = executeQuerySelect($querySelect);
 
       foreach($allOffersDatas as $offerDatasCheck){
@@ -70,7 +63,8 @@ function createOffers($offerData, $file){
 
     $id = count($allOffersDatas)+1;
     $file['img']['name'] = $id.substr($file['img']['name'],strpos($file['img']['name'],'.'),null);
-    $image = $target_dir . basename($file["img"]["name"]);
+    $image = basename($file["img"]["name"]);
+    $target = $target_dir . basename($file["img"]["name"]);
     $name = $offerData['title'];
     $price = number_format(floatval($offerData['price']),2);
     $brand = $offerData['brand'];
@@ -83,11 +77,13 @@ function createOffers($offerData, $file){
     $getUserID = executeQuerySelect($querySelectUser);
     $userID = $getUserID[0]['id'];
 
-    $creationQueryP1 = "INSERT INTO offers (title, description, price, town, brand, year, image, user_id) VALUES (".$strseparator.$name.$strseparator.", ".$strseparator.$description.$strseparator;
+    $creationQueryP1 = "INSERT INTO offers (title, description, price, town, brand, year, imageName, active, user_id) VALUES (".$strseparator.$name.$strseparator.", ".$strseparator.$description.$strseparator;
     $creationQueryP2 = ", ".$strseparator.$price.$strseparator.", ".$strseparator.$town.$strseparator.", ".$strseparator.$brand.$strseparator.", ".$strseparator.$year.$strseparator;
-    $creationQueryP3 = ", ".$strseparator.$image.$strseparator.", ".$userID.")";
+    $creationQueryP3 = ", ".$strseparator.$image.$strseparator.", 1, ".$userID.")";
     $creationQuery = $creationQueryP1.$creationQueryP2.$creationQueryP3;
     executeQueryInsert($creationQuery);
+
+    move_uploaded_file($file["img"]["tmp_name"], $target);
 
     header('Location: ?action=offers&offerCreated=true');
 } //toCheck
@@ -124,7 +120,7 @@ function modifyOffers($offerData, $offerId){
 function deleteOffers($offerId){
     $strseparator = '\'';
 
-    $queryDelete = "DELETE FROM offers WHERE offerNumber = ".$strseparator.$offerId.$strseparator;
+    $queryDelete = "UPDATE offers SET active = 0 WHERE id =".$strseparator.$offerId.$strseparator;
     executeQueryDelete($queryDelete);
 
 } //toCheck

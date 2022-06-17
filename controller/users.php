@@ -62,7 +62,7 @@ function userPage($username){
             //TODO NGY - why are you using a counter in a foreach (foreach alreday offer it)
             //TODO NGY - https://stackoverflow.com/questions/43021/how-do-you-get-the-index-of-the-current-iteration-of-a-foreach-loop
             $class++;
-            $linkToImg = $offer['image'];
+            $linkToImg = $offer['imageName'];
             $offerId = $offer['id'];
             $name = $offer['title'];
             $price = $offer['price'];
