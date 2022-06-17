@@ -2,7 +2,7 @@
  * Projet  : LoCar
  * Title   : db_create
  * Author  : Diogo da Silva Fernandes
- * Version : 1.1
+ * Version : 1.2
  */
 
 /* Delete the database if it already exist */
@@ -31,7 +31,7 @@ CREATE TABLE offers(
     town VARCHAR(25) NOT NULL,
     brand VARCHAR(20) NOT NULL,
     year YEAR NOT NULL,
-    image VARCHAR(100),
+    imageName VARCHAR(20),
     user_id INT NOT NULL,
     CONSTRAINT PK_Offer PRIMARY KEY (id),
     CONSTRAINT FK_Users_Offers FOREIGN KEY (user_id) REFERENCES users(id),
