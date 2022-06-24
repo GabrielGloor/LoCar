@@ -11,11 +11,12 @@
  * @param $query : This function is the query used in the db
  * @return array|false : This array is the return of the query datas
  */
-function executeQuerySelect($query)
+function executeQuerySelect($query): bool|array
 {
     //$queryResult = NULL;
 
     $dbConnection = openDBConnection();
+    $queryResult = null;
     if ($dbConnection != NULL)
     {
         $statement = $dbConnection->prepare($query); // Query prepare
@@ -31,7 +32,7 @@ function executeQuerySelect($query)
  * @brief : This function is designed to connect php to the db
  * @return PDO|null : This return is for enable connection for PHP
  */
-function openDBconnection()
+function openDBconnection(): ?PDO
 {
     $tempDBConnection = NULL;
     $sqlDriver = 'mysql';
@@ -53,12 +54,11 @@ function openDBconnection()
     return $tempDBConnection;
 }
 
-
 /**
  * @brief : This function is designed to execute query for insert datas in db
  * @param $registerQuery : This var is for the query to execute in the db
  */
-function executeQueryInsert($registerQuery)
+function executeQueryInsert($registerQuery): int
 {
 
     $dbConnection = openDBConnection();
@@ -66,11 +66,9 @@ function executeQueryInsert($registerQuery)
     {
         $statement = $dbConnection->prepare($registerQuery); // Query prepare
         $statement->execute(); // Execute query
-        //$queryResult = $statement->fetchAll(); // prepare results for client
     }
     $dbConnection = NULL; // close connection to the dataBase for the security
     return 0;
-
 }
 
 /**
@@ -88,7 +86,6 @@ function executeQueryDelete($deleteQuery)
         $queryResult = $statement->fetchAll(); // prepare results for client
     }
     $dbConnection = NULL; // close connection to the dataBase for the security
-
 }
 
 /**
@@ -100,9 +97,9 @@ function executeQueryUpdate($updateQuery){
     $dbConnection = openDBConnection();
     if ($dbConnection != NULL)
     {
-        $statement = $dbConnection->prepare($updateQuery); // Query prepare
-        $statement->execute(); // Execute query
-        $queryResult = $statement->fetchAll(); // prepare results for client
+        $statement = $dbConnection->prepare($updateQuery);
+        $statement->execute();
+        $queryResult = $statement->fetchAll();
     }
-    $dbConnection = NULL; // close connection to the dataBase for the security
+    $dbConnection = NULL;
 }

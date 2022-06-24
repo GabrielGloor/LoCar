@@ -8,6 +8,10 @@
  * @last_update  Diogo.DA-SILVA-FERNA - DATE
  */
 
+/**
+ * @param $infos
+ * @param $offer
+ */
 function mailCheck($infos,$offer){
     if (isset($infos['ownerEmail']) || isset($infos['name'])){
         require_once "model/emails.php";

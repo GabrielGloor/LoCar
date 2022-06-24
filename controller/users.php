@@ -10,7 +10,8 @@ require "model/users.php";
 
 /**
  * @brief   This function is designed to verify if the required data are filled
- * @param $userLoginData : Data filled by the user to log in
+ * @param null $userEmailAddress
+ * @param null $userPwd
  */
 function login($userEmailAddress = null, $userPwd = null)
 {
@@ -88,5 +89,4 @@ function logout()
     session_destroy();
 
     header("Location: ?action=home");
-
 }

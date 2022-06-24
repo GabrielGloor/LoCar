@@ -8,31 +8,43 @@
  * @last_update  Diogo.DA-SILVA-FERNA - DATE
  */
 
+/**
+ * @return Swift_SmtpTransport
+ */
 function transport_noreply(){
     // Create the Transport
-    $transport = (new Swift_SmtpTransport('mail01.swisscenter.com', 587))
+    return (new Swift_SmtpTransport('mail01.swisscenter.com', 587))
         ->setUsername('no-reply@locar.mycpnv.ch')
         //TODO NGY - set password dynamically
         ->setPassword('22_2a_loca_NOBD')
     ;
-
-    return $transport;
 }
 
-function createMailMessage($subject,$emailFrom,$emailFrom_Name,$emailTo,$body){
+/**
+ * @param $subject
+ * @param $emailFrom
+ * @param $emailFrom_Name
+ * @param $emailTo
+ * @param $body
+ * @return Swift_Message
+ */
+function createMailMessage($subject,$emailFrom,$emailFrom_Name,$emailTo,$body): Swift_Message
+{
     if ($emailFrom == null) $emailFrom = "no-reply@locar.mycpnv.ch";
     if ($emailFrom_Name == null) $emailFrom_Name = "LoCar | No-Reply";
 
-    $message = (new Swift_Message($subject))
+    return (new Swift_Message($subject))
         ->setFrom([$emailFrom => $emailFrom_Name])
         ->setTo([$emailTo])
         ->setContentType("text/html")
         ->setBody($body)
     ;
-
-    return $message;
 }
 
+/**
+ * @param $infos
+ * @param $code
+ */
 function confirm_mail($infos,$code){
     require_once 'model/vendor/autoload.php';
 
@@ -64,7 +76,13 @@ function confirm_mail($infos,$code){
     $mailer->send($message);
 }
 
-function mailSender($infos,$code){
+/**
+ * @param $infos
+ * @param $code
+ * @return bool
+ */
+function mailSender($infos,$code): bool
+{
     require_once 'model/vendor/autoload.php';
 
     // Create the Transport
@@ -85,7 +103,7 @@ function mailSender($infos,$code){
 
         // Create a message
         $message = createMailMessage("Votre offre a intéressé une personne !", null, null, $infos['ownerEmail'], $body);
-    }else{
+    } else {
         // Body message
         $body = "<html><body>";
         $body .= '<div style="width: 70%; margin-left: 15%; background-color: green;"><h2 style="text-align: center; color: white; padding: 20px 0">Une personne nous a contacté !</h2></div>';
@@ -96,14 +114,16 @@ function mailSender($infos,$code){
         $body .= "<div style='width: 70%; margin-left: 15%; background-color: #272727;'><p style='color: white; text-decoration: none; font-size: 15px; text-align: center; padding: 10px 0'>LoCar</p></div></body></html>";
 
         // Create a message
-        $message = createMailMessage("E-mail de ".$infos['name'], null, null, "contact@locar.mycpnv.ch", $body);
+        $message = createMailMessage("E-mail de " . $infos['name'], null, null, "contact@locar.mycpnv.ch", $body);
     }
 
     // Send the message
     $result = $mailer->send($message);
 
-    if ($result){
-        confirm_mail($infos,$code);
+    if ($result) {
+        confirm_mail($infos, $code);
         return true;
-    }else return false;
+    } else{
+        return false;
+    }
 }

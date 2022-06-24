@@ -13,9 +13,8 @@ require_once "model/dbConnector.php";
  * @brief This function is designed to take offers infos in the json data file
  * @return mixed This function return the datas of the offers
  */
-function getOffersInfos($filters = "", $id = null){
-    //$jsonFile = "model/content/offers.json";
-    //$offersInfos = decodeJson($jsonFile);
+function getOffersInfos($filters = "", $id = null): mixed
+{
     $querySelect = $id == null ? "SELECT id, title, description, price, town, brand, year, imageName, user_id FROM offers WHERE active = 1" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id = offers.user_id WHERE offers.id =".$id." AND active = 1";
 
     //$querySelect = $id == null ? "SELECT offerNumber, title, description, price, town, brand, year, image, user_id FROM offers" : "SELECT offers.id, offers.title, offers.description, offers.price, offers.town, offers.brand, offers.year, offers.image, users.email FROM users INNER JOIN offers ON users.id =".offers.user_id."WHERE offers.id =".$id;
@@ -43,16 +42,16 @@ function getOffersInfos($filters = "", $id = null){
     }
 
     return $offersInfos;
-} //toDO
+}
 
 /**
  * @brief This function is designed to create an offer on insert it in json file
- * @param $offerData : This param contain all the offer's datas
- * @param $file : This param contain the informations about the offer image
+ * @param $offerData : This param contain all the offer's data
+ * @param $file : This param contain the information about the offer image
  */
 function createOffers($offerData, $file){
     $target_dir = "model/content/offers_img/";
-    $strseparator = '\'';
+    $strSeparator = '\'';
 
     $querySelect = "SELECT id, title, description, price, town, brand, year, imageName, user_id FROM offers";
     $allOffersDatas = executeQuerySelect($querySelect);
@@ -65,6 +64,8 @@ function createOffers($offerData, $file){
     $file['img']['name'] = $id.substr($file['img']['name'],strpos($file['img']['name'],'.'),null);
     $image = basename($file["img"]["name"]);
     $target = $target_dir . basename($file["img"]["name"]);
+
+    //duplicate code -> see of 6 lines long in 98-103
     $name = $offerData['title'];
     $price = number_format(floatval($offerData['price']),2);
     $brand = $offerData['brand'];
@@ -73,13 +74,13 @@ function createOffers($offerData, $file){
     $year = intval($offerData['year']);
 
     $ownerEmail = $_SESSION['email'];
-    $querySelectUser = "SELECT id FROM users WHERE email = ".$strseparator.$ownerEmail.$strseparator;
+    $querySelectUser = "SELECT id FROM users WHERE email = ".$strSeparator.$ownerEmail.$strSeparator;
     $getUserID = executeQuerySelect($querySelectUser);
     $userID = $getUserID[0]['id'];
 
-    $creationQueryP1 = "INSERT INTO offers (title, description, price, town, brand, year, imageName, active, user_id) VALUES (".$strseparator.$name.$strseparator.", ".$strseparator.$description.$strseparator;
-    $creationQueryP2 = ", ".$strseparator.$price.$strseparator.", ".$strseparator.$town.$strseparator.", ".$strseparator.$brand.$strseparator.", ".$strseparator.$year.$strseparator;
-    $creationQueryP3 = ", ".$strseparator.$image.$strseparator.", 1, ".$userID.")";
+    $creationQueryP1 = "INSERT INTO offers (title, description, price, town, brand, year, imageName, active, user_id) VALUES (".$strSeparator.$name.$strSeparator.", ".$strSeparator.$description.$strSeparator;
+    $creationQueryP2 = ", ".$strSeparator.$price.$strSeparator.", ".$strSeparator.$town.$strSeparator.", ".$strSeparator.$brand.$strSeparator.", ".$strSeparator.$year.$strSeparator;
+    $creationQueryP3 = ", ".$strSeparator.$image.$strSeparator.", 1, ".$userID.")";
     $creationQuery = $creationQueryP1.$creationQueryP2.$creationQueryP3;
     executeQueryInsert($creationQuery);
 
@@ -90,12 +91,13 @@ function createOffers($offerData, $file){
 
 /**
  * @brief This function is designed to modify an offer
- * @param $offerData : This param contain all the offer's datas
+ * @param $offerData : This param contain all the offer's data
  * @param $offerId : This param is the offer id. It will be used to fill the form with the data already existing for example
  */
 function modifyOffers($offerData, $offerId){
     $strSeparator = '\'';
 
+    //duplicate code -> see of 6 lines long in 67-72
     $title = $offerData['title'];
     $price = number_format(floatval($offerData['price']),2);
     $brand = $offerData['brand'];

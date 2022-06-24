@@ -47,7 +47,7 @@ if (isset($_SESSION['username'])) header('Location: ?action=home');
 					</div>
 					
 					<div class="wrap-input100 validate-input" data-validate="Vous devez entrer un mot de passe">
-						<input class="input100" type="password" name="inputPswd" id="psswd">
+						<input class="input100" type="password" name="inputPwd" id="psswd">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Mot de passe</span>
 					</div>
