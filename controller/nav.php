@@ -19,5 +19,6 @@ function home()
  */
 function lost()
 {
+    //TODO what about redirecting to home, with info message "this page wasn't found"
     require "view/lost.php";
 }

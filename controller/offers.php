@@ -32,7 +32,9 @@ function offers($filters = null){
             $btnName = 'Détails';
 
             require "view/contents/offer_template.php";
+            //TODO prefer to use the index integrate by the foreach mechanism (https://www.php.net/manual/fr/control-structures.foreach.php)
             $classNb++;
+
         }
     }else{
         echo "<h2>Aucune offre correspond à vos filtres.</h2>";
@@ -68,19 +70,13 @@ function showOffersInHomePage(){
 }
 
 /**
- * @brief This function is designed to show to the user a page with all the infos of an offer
- * @param $offferId : ID of the offer get by $_GET
+ * @param $offerId
  */
 
-/*function offerDetails($id)
-{
-    $offersDatas = getOffersInfos($id);
-}
-*/
+//TODO offerDetails is not an action, a verb !!!
 function offerDetails($offerId)
 {
     $offersDatas = getOffersInfos("", intval($offerId));
-
 
     foreach ($offersDatas as $offerData){
         if ($offerData['id'] == $offerId) {
@@ -99,10 +95,15 @@ function offerDetails($offerId)
     }
 }
 
+/**
+ * @param $infos
+ * @param $file
+ */
 function createOffer($infos, $file){
     if (!isset($_SESSION['username'])) header('Location: ?action=home');
 
     if (isset($infos['title'])){
+        //TODO Start testing the positive case, and then the error cases (and code it only with one if)
         if ((int) $infos['year'] > (int) date("Y") || (int) $infos['year'] < 1920){
             setInfos($infos);
             $yearErr = YEAR_ERROR_MESSAGE;
@@ -116,6 +117,10 @@ function createOffer($infos, $file){
     }
 }
 
+/**
+ * @param $infos
+ * @param $offerId
+ */
 function modifyOffer($infos, $offerId){
     if (!isset($_SESSION['username'])) header('Location: ?action=home');
 
@@ -162,6 +167,9 @@ function deleteOffer($offerId){
     header("Location: ?action=user&username=".$_SESSION['username']."&deleted=true");
 }
 
+/**
+ * @param $infos
+ */
 function setInfo($infos){
     $offerId = $infos['id'];
     $name = $infos['title'];

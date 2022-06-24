@@ -11,10 +11,10 @@ require_once "model/dbConnector.php";
 
 /**
  * @brief   This function is designed to verify if the login form of the user is correct
- * @param $email    User Email
- * @param $password     User Password
+ * @param $email    string  User Email
+ * @param $password string   User Password
  */
-function isUserCorrect($email,$password){
+function isUserCorrect(string $email, string $password){
 
     $strSeparator = '\'';
     $querySelect = "SELECT username, email, password FROM users WHERE email =".$strSeparator.$email.$strSeparator;
@@ -31,6 +31,9 @@ function isUserCorrect($email,$password){
 	}else{
 		header('Location: ?action=login&incorrect=true');
 	}
+    
+    //TODO this function must return a boolean. The controller is then responsible to redirect the query to the view (model to view should be avoided in MVC).
+    
 } //toCheck
 
 /**
@@ -41,18 +44,17 @@ function isUserCorrect($email,$password){
  */
 function userRegister($username, $email, $password){
 
-    $strseparator = '\'';
+    $strSeparator = '\'';
 
-    $querySelect = "SELECT username, email, password FROM users WHERE username = ".$strseparator.$username.$strseparator." OR email = ".$strseparator.$email.$strseparator;
+    $querySelect = "SELECT username, email, password FROM users WHERE username = ".$strSeparator.$username.$strSeparator." OR email = ".$strSeparator.$email.$strSeparator;
     $queryResult = executeQuerySelect($querySelect);
 
     if(isset($queryResult['email'])){
         header('Location: ?action=register&incorrect=true&userExists=true');
     }else{
-        $queryInsert = "INSERT INTO users (username, email, password) VALUES (".$strseparator.$username.$strseparator.", ".$strseparator.$email.$strseparator.", ".$strseparator.password_hash($password, PASSWORD_DEFAULT).$strseparator.")";
-        //$queryInsert = "INSERT INTO users(username, email, password) VALUES(".$strseparator.$username.$strseparator.", ".$strseparator.$email.$strseparator.", ".$strseparator.password_hash($password, PASSWORD_DEFAULT).$strseparator;
+        $queryInsert = "INSERT INTO users (username, email, password) VALUES (".$strSeparator.$username.$strSeparator.", ".$strSeparator.$email.$strSeparator.", ".$strSeparator.password_hash($password, PASSWORD_DEFAULT).$strSeparator.")";
         executeQueryInsert($queryInsert);
 
         header('Location: ?action=login&userCreated=true');
     }
-} //toCheck
+}

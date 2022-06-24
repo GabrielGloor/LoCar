@@ -3,7 +3,7 @@
  * @Author : Romain Humbert-Droz-Laurent
  * @Date : 10.02.2022
  * @Version : 0.1
- * @Description : This file is designed for redirecting to the adaptate fonction
+ * @Description : This file is designed for redirecting to the adapted function
  */
 
 require "controller/users.php";
@@ -20,7 +20,7 @@ if (isset($_GET['action'])) {
             home();
             break;
         case 'login' :
-            if (isset($_POST['inputEmail']) && isset($_POST['inputPswd'])) login($_POST['inputEmail'], $_POST['inputPswd']);
+            if (isset($_POST['inputEmail']) && isset($_POST['inputPwd'])) login($_POST['inputEmail'], $_POST['inputPwd']);
             else login();
             break;
         case 'logout' :
@@ -51,9 +51,8 @@ if (isset($_GET['action'])) {
             mailCheck($_POST,$_GET['offerId']);
             break;
         default :
-            lost();
+            home();
     }
 } else {
     home();
 }
-?>
